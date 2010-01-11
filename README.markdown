@@ -5,6 +5,8 @@
     My Vim configurations
 .gitconfig
     My git configuration
+.bashrc
+    My bash configuration
 
 ## Instructions
 ### Creating source files

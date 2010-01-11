@@ -6,6 +6,6 @@ do
     if [ -e "${target}" ]; then
         echo "${target} already exists"       
     else
-        ln -sf ${source} ${target}
+        ln -sfv ${source} ${target}
     fi
 done
