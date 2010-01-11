@@ -17,7 +17,7 @@ if [ -d "${HOME}/bin" ] ; then
     PATH=${HOME}/bin:${PATH}
 fi
 
-# environ config
+# see environ manfile
 export EDITOR=vim       # Default Editor
 export VISUAL=$EDITOR   # Visual not really used differently from EDITOR anymore
 export LESS='-iMR'      # Case insensite search, verbose prompting and raw output
@@ -26,12 +26,11 @@ export PAGER=less       # Used to display text / man files
 #
 # History
 #
-HISTCONTROL=ignoredups  # No duplicate commands in history
-HISTSIZE=50000          # For a huge history
-# Don't save these commands in the history
-export HISTIGNORE="[   ]*:&:bg:fg:exit"
-shopt -s histappend     # Append to the history file, not overwrite
-PROMPT_COMMAND=`history -a ; history -n` # Keep history sync'd between bash sessions (Can slow bash down)
+HISTCONTROL=ignoredups                    # No duplicate commands in history
+HISTSIZE=50000                            # For a huge history
+export HISTIGNORE="[   ]*:&:bg:fg:exit"   # Don't save these commands in the history
+shopt -s histappend                       # Append to the history file, not overwrite
+PROMPT_COMMAND=`history -a ; history -n`  # Keep history sync'd between bash sessions (Can slow bash down)
 
 #
 # Bash behavior
