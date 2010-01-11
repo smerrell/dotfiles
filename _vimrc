@@ -3,6 +3,8 @@
 
 set nocompatible " vim > vi mode.
 
+colorscheme ron
+
 "
 " Moving around / editing
 "
@@ -14,6 +16,12 @@ set matchtime=2         " for .2 seconds
 set linebreak           " Don't wrap text in the middle of a word
 set mouse=a             " Always enable mouse
 set clipboard+=unnamed  " Makes using clipboard easier
+" Navigate by display line NOT by actual line
+nnoremap j gj
+nnoremap k gk
+" Navigate by actual line NOT by display line
+nnoremap gj j
+nnoremap k gk
 
 "
 " Search / Replace
