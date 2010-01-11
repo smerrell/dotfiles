@@ -3,6 +3,8 @@
     My Screen configurations
 .vimrc 
     My Vim configurations
+.gitconfig
+    My git configuration
 
 ## Instructions
 ### Creating source files
