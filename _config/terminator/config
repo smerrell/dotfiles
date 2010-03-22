@@ -1,0 +1,6 @@
+background_type=transparent
+enable_real_transparency=true
+background_darkness=0.8
+font=Liberation Mono 11
+scrollback_lines=5000
+force_no_bell=true

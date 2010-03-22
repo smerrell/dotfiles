@@ -8,4 +8,17 @@ do
     else
         ln -sfv ${source} ${target}
     fi
+
+    if [ "$(basename $source)" == "_config" ]; then
+        for y in ${source}/*
+        do
+          cfgdir="$(basename $y)"
+          cfgdest="~/.config/${cfgdir}"
+          if [[ -e "${cfgdest}" || -L "${cfgdest}" ]]; then
+            echo ${cfgdest} already exists
+          else
+            echo ln -sfv ${cfgdir} ${cfgdest}
+          fi
+        done
+    fi
 done
