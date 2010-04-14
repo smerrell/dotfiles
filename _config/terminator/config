@@ -1,6 +1,37 @@
-background_type=transparent
-enable_real_transparency=true
-background_darkness=0.8
-font=Liberation Mono 11
-scrollback_lines=5000
-force_no_bell=true
+[global_config]
+  focus = system
+[keybindings]
+[profiles]
+  [[default]]
+    use_system_font = False
+    background_darkness = 0.88
+    scrollback_lines = 5000
+    background_type = transparent
+    foreground_color = "#FFFFFF"
+    font = Liberation Mono 11
+    background_color = "#300A24"
+[layouts]
+  [[default]]
+    [[[child0]]]
+      position = 157:38
+      type = Window
+      order = 0
+      parent = ""
+      size = 1054, 607
+    [[[child1]]]
+      position = 591
+      type = HPaned
+      order = 0
+      parent = child0
+    [[[terminal3]]]
+      profile = default
+      type = Terminal
+      order = 1
+      parent = child1
+      command = ""
+    [[[terminal2]]]
+      profile = default
+      type = Terminal
+      order = 0
+      parent = child1
+[plugins]

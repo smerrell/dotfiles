@@ -13,11 +13,11 @@ do
         for y in ${source}/*
         do
           cfgdir="$(basename $y)"
-          cfgdest="~/.config/${cfgdir}"
+          cfgdest="${HOME}/.config/${cfgdir}"
           if [[ -e "${cfgdest}" || -L "${cfgdest}" ]]; then
             echo ${cfgdest} already exists
           else
-            echo ln -sfv ${cfgdir} ${cfgdest}
+            ln -sfv ${PWD}/_config/${cfgdir} ${cfgdest}
           fi
         done
     fi
