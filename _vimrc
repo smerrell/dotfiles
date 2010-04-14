@@ -115,6 +115,46 @@ iab xday <c-r>=strftime("%d/%m/%y")<cr>
 iab xtime <c-r>=strftime("%H:%M:%S")<cr>
 iab xname samerrel
 
+" execute selected script
+map <C-h> :py EvaluateCurrentRange()<CR>
+
+" Show tasks in current buffer
+map T :TaskList<CR><C-w><Left>
+
+" Show Project Menu
+map <F3> :NERDTreeToggle<CR>
+
+let Tlist_GainFocus_On_ToggleOpen=1
+
 "
-" Functions
+" Python tweaks (from Sontek - http://github.com/sontek/dotfiles)
 "
+
+" treat html files as django templates
+autocmd BufRead *.html set filetype=htmldjango
+
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"      
+autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m       
+
+inoremap <Nul> <C-x><C-o>
+inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+        \ "\<lt>C-n>" :
+        \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+        \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+        \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+imap <C-@> <C-Space>
+
+python << EOF
+import os
+import sys
+import vim
+# lets us use 'gf' to go to files imported
+for p in sys.path:
+    if os.path.isdir(p):
+        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
+
+# lets us execute the highlighted portion of the script
+def EvaluateCurrentRange():
+  eval(compile('\n'.join(vim.current.range),'','exec'),globals())
+EOF
