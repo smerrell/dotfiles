@@ -49,9 +49,25 @@ GREEN="\[\033[0;32m\]"
 GRAY="\[\033[1;30m\]"
 EMPTY="\[\033[0;37m\]"
 
+#
+# Merges Git and SVN info to make the PS1 a little cleaner looking
+# Got this from: http://www.codeography.com/2009/05/26/speedy-bash-prompt-git-and-subversion-integration.html
+#
+scm_ps1() {
+    local s=
+    if [[ -d ".svn" ]] ; then
+        s=\($(svn info | sed -n -e '/^Revision: \([0-9]*\).*$/s//\1/p' )\)
+    else
+        s=$(__git_ps1 "(%s)")
+    fi
+
+    echo -n "$s"
+}
+
 # [hh:mm] username@host (git branch) ~/working/directory
 # $
-PS1="$GREEN[\$(date +%H:%M)] \u@\h $RED\$(__git_ps1 '(%s)') $YELLOW\w \n$EMPTY\$ "
+#PS1="$GREEN[\$(date +%H:%M)] \u@\h $RED\$(__git_ps1 '(%s)' $(__svn_stat)) $YELLOW\w \n$EMPTY\$ "
+PS1="$GREEN[\$(date +%H:%M)] \u@\h $RED\$(scm_ps1) $YELLOW\w \n$EMPTY\$ "
 PS2="$GRAY> $EMPTY"
 
 # Load any extra aliases
