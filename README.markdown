@@ -1,13 +1,3 @@
-## Files
-.screenrc 
-    My Screen configurations
-.vimrc 
-    My Vim configurations
-.gitconfig
-    My git configuration
-.bashrc
-    My bash configuration
-
 ## Instructions
 ### Creating source files
 Any file which matches the shell glob `_*` will be linked into `$HOME` as a symlink with the first `_`
