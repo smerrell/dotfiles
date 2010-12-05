@@ -3,7 +3,7 @@
 
 set nocompatible " vim > vi mode.
 
-colorscheme ron
+colorscheme koehler
 
 "
 " Moving around / editing
