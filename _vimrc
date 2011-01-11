@@ -4,7 +4,7 @@
 set nocompatible " vim > vi mode.
 
 set t_Co=256 " For 256 color mode support
-colorscheme inkpot
+colorscheme wombat256mod
 
 "
 " Moving around / editing
@@ -36,10 +36,11 @@ set gdefault            " Default to /g global replace
 " Display
 "
 "set guifont=DejaVu_Sans_Mono:h10:cANSI
-set guifont=DejaVu\ Sans\ Mono\ 11
+set guifont=Anonymous\ Pro\ 11
+set guifont=Anonymous\ Pro:h11
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
-set background=dark
+"set background=dark
 set textwidth=110       " Sets the max width text can be before vim inserts a linebreak
 set guioptions+=c       " Use console dialogs instead of popup dialogs for simple choices
 set guioptions-=T       " Remove toolbar
