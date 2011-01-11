@@ -3,7 +3,8 @@
 
 set nocompatible " vim > vi mode.
 
-colorscheme koehler
+set t_Co=256 " For 256 color mode support
+colorscheme inkpot
 
 "
 " Moving around / editing
