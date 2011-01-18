@@ -13,9 +13,6 @@
 [push]
     default = matching
 
-[merge]
-    tool = /usr/bin/diffmerge
-
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     
