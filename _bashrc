@@ -49,6 +49,12 @@ GREEN="\[\033[0;32m\]"
 GRAY="\[\033[1;30m\]"
 EMPTY="\[\033[0;37m\]"
 
+LIGHTBLUE="\[\033[38;5;111m\]"
+LIGHTRED="\[\033[38;5;172m\]"
+LIGHTYELLOW="\[\033[38;5;229m\]"
+CONTINUE="\[\033[38;5;242m\]"
+DARKGRAY="\[\033[38;5;247m\]"
+
 #
 # Merges Git and SVN info to make the PS1 a little cleaner looking
 # Got this from: http://www.codeography.com/2009/05/26/speedy-bash-prompt-git-and-subversion-integration.html
@@ -64,11 +70,11 @@ scm_ps1() {
     echo -n "$s"
 }
 
-# [hh:mm] username@host (git branch) ~/working/directory
+# [hh:mm] username@host (git branch || svn revision) ~/working/directory
 # $
-#PS1="$GREEN[\$(date +%H:%M)] \u@\h $RED\$(__git_ps1 '(%s)' $(__svn_stat)) $YELLOW\w \n$EMPTY\$ "
-PS1="$GREEN[\$(date +%H:%M)] \u@\h $RED\$(scm_ps1) $YELLOW\w \n$EMPTY\$ "
-PS2="$GRAY> $EMPTY"
+#TODO Do some checking on whether term supports 256 colors
+PS1="$LIGHTBLUE[\$(date +%H:%M)] \u@\h $LIGHTRED\$(scm_ps1) $LIGHTYELLOW\w \n$EMPTY\$ $DARKGRAY"
+PS2="$CONTINUE> $DARKGRAY"
 
 # Load any extra aliases
 if [ -f ~/.bash_aliases ]; then
