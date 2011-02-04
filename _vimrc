@@ -41,9 +41,9 @@ set gdefault            " Default to /g global replace
 "
 "set guifont=DejaVu_Sans_Mono:h10:cANSI
 if has("gui_gtk2")
-  set guifont=Anonymous\ Pro\ 11, DejaVu\ Sans\ Mono\ 10
+  set guifont=Anonymous\ Pro\ 11,DejaVu\ Sans\ Mono\ 11
 elseif has("gui_win32")
-  set guifont=Anonymous\ Pro:h11
+  set guifont=Anonymous\ Pro:h11,Consolas:h11
 endif
 
 set number              " Show line numbers
