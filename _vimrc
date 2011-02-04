@@ -4,7 +4,11 @@
 set nocompatible " vim > vi mode.
 
 set t_Co=256 " For 256 color mode support
-colorscheme wombat256mod
+if has('gui_running')
+  colorscheme inkpot
+else
+  colorscheme wombat256mod
+endif
 
 "
 " Moving around / editing
@@ -36,8 +40,12 @@ set gdefault            " Default to /g global replace
 " Display
 "
 "set guifont=DejaVu_Sans_Mono:h10:cANSI
-set guifont=Anonymous\ Pro\ 11
-set guifont=Anonymous\ Pro:h11
+if has("gui_gtk2")
+  set guifont=Anonymous\ Pro\ 11, DejaVu\ Sans\ Mono\ 10
+elseif has("gui_win32")
+  set guifont=Anonymous\ Pro:h11
+endif
+
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
 "set background=dark
@@ -45,6 +53,7 @@ set textwidth=110       " Sets the max width text can be before vim inserts a li
 set guioptions+=c       " Use console dialogs instead of popup dialogs for simple choices
 set guioptions-=T       " Remove toolbar
 set guioptions-=r       " Remove right-hand scroll bar
+set guioptions-=m       " Removes the menu
 
 "
 " Messages, Info, & Status
