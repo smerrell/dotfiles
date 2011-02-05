@@ -43,13 +43,15 @@ set gdefault            " Default to /g global replace
 if has("gui_gtk2")
   set guifont=Anonymous\ Pro\ 11,DejaVu\ Sans\ Mono\ 11
 elseif has("gui_win32")
-  set guifont=Anonymous\ Pro:h11,Consolas:h11
+  set guifont=Anonymous\ Pro:h11,DejaVu\ Sans\ Mono:h11,Consolas:h11
 endif
 
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
 "set background=dark
-set textwidth=110       " Sets the max width text can be before vim inserts a linebreak
+"set textwidth=110       " Sets the max width text can be before vim inserts a linebreak
+" Highlights text after going over the max text width
+set nowrap  " Line wrapping off
 set guioptions+=c       " Use console dialogs instead of popup dialogs for simple choices
 set guioptions-=T       " Remove toolbar
 set guioptions-=r       " Remove right-hand scroll bar
@@ -59,6 +61,8 @@ set guioptions-=m       " Removes the menu
 " Messages, Info, & Status
 "
 set vb t_vb=            " No bells. Period.
+set novisualbell        " No blinking
+set noerrorbells        " No noise
 set cmdheight=2         " Cmd bar 2 rows high
 set showcmd             " Show partial command in the last line of the screen
 set report=0            " : commands always print changed line count
@@ -69,12 +73,14 @@ set ruler               " Display position in the file
 "
 " Tabs / indentation
 "
-set tabstop=4           " Use 4 spaces for <tab>
+"set tabstop=4           " Use 4 spaces for <tab>
 set shiftwidth=2        " Indent level is 2 spaces wide
 set softtabstop=2       " <BS> over an autoindent deletes shiftwidth worth of spaces
 set smarttab            " Insert blanks properly at beginning of a line
 set autoindent          " Copy indent from current line when starting a new line
 set expandtab           " Use spaces not tabs
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set list
 
 " Some file type really do require explicit tabs
 autocmd FileType make       set noexpandtab
@@ -140,6 +146,10 @@ map <F3> :NERDTreeToggle<CR>
 
 let Tlist_GainFocus_On_ToggleOpen=1
 
+if ('has_guirunning')
+  highlight OverLength ctermbg=DarkBlue ctermfg=white guibg=#592929
+  match OverLength /\%111v.\+/
+endif
 "
 " Python tweaks (from Sontek - http://github.com/sontek/dotfiles)
 "
