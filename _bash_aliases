@@ -1,0 +1,1 @@
+alias pd="pushd $1"
