@@ -135,6 +135,11 @@ map <silent><C-P> :tabp<CR>
 " change <leader> from \ to ,
 let mapleader = ","
 
+if has("gui_win32")
+  " TFS / Visual Studio setup for gvim
+  nmap <F8> :!"\%VS_HOME\%\TF.exe" checkout %:p<cr>
+endif
+
 "
 " Abbrevs
 "
