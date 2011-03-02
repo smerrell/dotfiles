@@ -1,5 +1,10 @@
 " Author: Sam Merrell (merrell.sam@gmail.com)
-" 
+"
+
+" Pathogen
+filetype off
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
 
 set nocompatible " vim > vi mode.
 
@@ -153,6 +158,7 @@ if ('has_guirunning')
   highlight OverLength ctermbg=DarkBlue ctermfg=white guibg=#592929
   match OverLength /\%111v.\+/
 endif
+
 "
 " Python tweaks (from Sontek - http://github.com/sontek/dotfiles)
 "
