@@ -1,20 +1,26 @@
 [user]
-	name = smerrell
-	email = merrell.sam@gmail.com
+    name = smerrell
+    email = merrell.sam@gmail.com
     editor = vim
 
 [color]
     pager = true
-	status = auto
-	branch = auto
-	diff = auto
+    status = auto
+    branch = auto
+    diff = auto
     interactive = auto
 
 [push]
     default = matching
 
 [alias]
+    ct = tfs ct --build-default-comment
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    
+    fmerge = merge --ff-only
+    tfsrebase = !git checkout master && git tfs pull && git checkout @{-1} && git rebase master
+    tfsworkflow = !git checkout master && git tfs pull && git checkout @{-1} && git rebase master && git checkout master && git merge @{-1} --ff-only  && git tfs ct --build-default-comment
+    upmaster = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD
+    uprebase = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD &&  git checkout @{-1} && git rebase master
+
 [github]
-	user = smerrell
+    user = smerrell
