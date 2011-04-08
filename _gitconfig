@@ -14,13 +14,19 @@
     default = matching
 
 [alias]
+    # Git-tfs workflows
     ct = tfs ct --build-default-comment
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    fmerge = merge --ff-only
-    tfsrebase = !git checkout master && git tfs pull && git checkout @{-1} && git rebase master
+    tfsrebase = !git stash && git checkout master && git tfs pull && git checkout @{-1} && git rebase master && git stash pop
     tfsworkflow = !git checkout master && git tfs pull && git checkout @{-1} && git rebase master && git checkout master && git merge @{-1} --ff-only  && git tfs ct --build-default-comment
+
+    # Github workflows
     upmaster = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD
     uprebase = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD &&  git checkout @{-1} && git rebase master
+
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    lstat = log --relative --abbrev-commit --date=local --pretty=format:'%C(white)%h %C(cyan)%cr %C(green)by %cn %Creset%n%C(yellow)%cd%n%s' --stat
+    fmerge = merge --ff-only
+    peeps = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
 
 [github]
     user = smerrell
