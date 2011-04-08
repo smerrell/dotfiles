@@ -56,7 +56,6 @@ endif
 
 set number              " Show line numbers
 set numberwidth=1       " Try to use only 1 col when possible
-"set background=dark
 "set textwidth=110       " Sets the max width text can be before vim inserts a linebreak
 " Highlights text after going over the max text width
 set nowrap  " Line wrapping off
@@ -64,6 +63,7 @@ set guioptions+=c       " Use console dialogs instead of popup dialogs for simpl
 set guioptions-=T       " Remove toolbar
 set guioptions-=r       " Remove right-hand scroll bar
 set guioptions-=m       " Removes the menu
+set cursorline
 
 "
 " Messages, Info, & Status
@@ -154,7 +154,8 @@ map <C-h> :py EvaluateCurrentRange()<CR>
 " Show tasks in current buffer
 map T :TaskList<CR><C-w><Left>
 
-" Show Project Menu
+" NERD Tree Settings
+map <F4> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle<CR>
 
 let Tlist_GainFocus_On_ToggleOpen=1
@@ -172,8 +173,8 @@ endif
 autocmd BufRead *.html set filetype=htmldjango
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"      
-autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m       
+autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 if has("python")
 python << EOF
