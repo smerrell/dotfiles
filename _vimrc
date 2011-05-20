@@ -10,7 +10,8 @@ set nocompatible " vim > vi mode.
 
 set t_Co=256 " For 256 color mode support
 if has('gui_running')
-  colorscheme inkpot
+  "colorscheme inkpot
+  colorscheme solarized
 else
   colorscheme wombat256mod
 endif
@@ -32,6 +33,28 @@ nnoremap k gk
 " Navigate by actual line NOT by display line
 nnoremap gj j
 nnoremap k gk
+
+"
+" Windowing
+"
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+
+"
+" Tabs
+"
+map th :tabfirst<CR>
+map tk :tabnext<CR>
+map tj :tabprev<CR>
+map tl :tablast<CR>
+map tt :tabedit<Space>
+map tn :tabnext<Space>
+map tm :tabm<Space>
+map <silent><C-N> :tabn<CR>
+map <silent><C-P> :tabp<CR>
 
 "
 " Search / Replace
@@ -128,9 +151,6 @@ syntax on               " Enable per-filetype syntax highlighting
 " Key Mappings
 "
 
-" Move between tabs
-map <silent><C-N> :tabn<CR>
-map <silent><C-P> :tabp<CR>
 
 " change <leader> from \ to ,
 let mapleader = ","

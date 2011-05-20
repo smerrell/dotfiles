@@ -22,10 +22,10 @@ git_bundles = [
   "git://github.com/vim-ruby/vim-ruby.git",
   "git://github.com/kchmck/vim-coffee-script.git",
   "git://github.com/altercation/vim-colors-solarized.git",
+  #"git://github.com/garbas/vim-jquery-tmpl.git",
 ]
 
 vim_org_scripts = [
-  ["gist",          "12732", "plugin"],
   ["jquery",        "12107", "syntax"],
 ]
 
