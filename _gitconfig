@@ -1,32 +1,52 @@
 [user]
-    name = smerrell
-    email = merrell.sam@gmail.com
-    editor = vim
+  name = smerrell
+  email = merrell.sam@gmail.com
+  editor = vim
 
 [color]
-    pager = true
-    status = auto
-    branch = auto
-    diff = auto
-    interactive = auto
+  pager = true
+  status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
 
 [push]
-    default = matching
+  default = matching
+
+[merge]
+  tool = p4merge
+
+[mergetool "p4merge"]
+  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  trustExitCode = false
+  keepTemporaries = false
+
+[diff]
+  tool = p4diff
+
+[difftool "p4diff"]
+  cmd = /home/smerrell/Src/p4diff.sh "$LOCAL" "$REMOTE"
 
 [alias]
-    # Git-tfs workflows
-    ct = tfs ct --build-default-comment
-    tfsrebase = !git stash && git checkout master && git tfs pull && git checkout @{-1} && git rebase master && git stash pop
-    tfsworkflow = !git checkout master && git tfs pull && git checkout @{-1} && git rebase master && git checkout master && git merge @{-1} --ff-only  && git tfs ct --build-default-comment
+  # Git-tfs workflows
+  ct = tfs ct --build-default-comment
+  tfsrb = !git checkout master && git tfs pull && git checkout @{-1} && git rebase master
+  tfsrebase = !git stash && git checkout master && git tfs pull && git checkout @{-1} && git rebase master && git stash pop
+  tfsworkflow = !git checkout master && git tfs pull && git checkout @{-1} && git rebase master && git checkout master && git merge @{-1} --ff-only  && git tfs ct --build-default-comment
 
-    # Github workflows
-    upmaster = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD
-    uprebase = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD &&  git checkout @{-1} && git rebase master
+  # Github workflows
+  upmaster = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD
+  uprebase = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD &&  git checkout @{-1} && git rebase master
 
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    lstat = log --relative --abbrev-commit --date=local --pretty=format:'%C(white)%h %C(cyan)%cr %C(green)by %cn %Creset%n%C(yellow)%cd%n%s' --stat
-    fmerge = merge --ff-only
-    peeps = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  lstat = log --stat --relative --abbrev-commit --date=local --pretty=format:'%C(white)%h %C(cyan)%cr %C(green)by %cn %Creset%n%C(yellow)%cd%n%s'
+  fmerge = merge --ff-only
+  peeps = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
+
+[log]
+  date = local
 
 [github]
-    user = smerrell
+  user = smerrell
+[http]
+  sslverify = false
