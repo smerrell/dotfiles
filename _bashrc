@@ -15,8 +15,15 @@ fi
 #
 # Initialization
 #
-if [ -d "${HOME}/bin" ] ; then 
+if [ -d "${HOME}/bin" ] ; then
     PATH=${HOME}/bin:${PATH}
+fi
+
+#
+# Dircolors
+#
+if [ -f ~/.dircolors ]; then
+  eval `dircolors -b ~/.dircolors`
 fi
 
 # see environ manfile
@@ -32,7 +39,6 @@ HISTCONTROL=ignoredups                    # No duplicate commands in history
 HISTSIZE=50000                            # For a huge history
 export HISTIGNORE="[   ]*:&:bg:fg:exit"   # Don't save these commands in the history
 shopt -s histappend                       # Append to the history file, not overwrite
-PROMPT_COMMAND=`history -a ; history -n`  # Keep history sync'd between bash sessions (Can slow bash down)
 
 #
 # Bash behavior
