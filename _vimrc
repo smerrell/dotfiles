@@ -10,7 +10,6 @@ set nocompatible " vim > vi mode.
 
 set t_Co=256 " For 256 color mode support
 if has('gui_running')
-  "colorscheme inkpot
   colorscheme solarized
 else
   colorscheme wombat256mod
@@ -169,10 +168,10 @@ iab xtime <c-r>=strftime("%H:%M:%S")<cr>
 iab xname samerrel
 
 " execute selected script
-map <C-h> :py EvaluateCurrentRange()<CR>
+"map <C-h> :py EvaluateCurrentRange()<CR>
 
 " Show tasks in current buffer
-map T :TaskList<CR><C-w><Left>
+"map T :TaskList<CR><C-w><Left>
 
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
@@ -184,6 +183,11 @@ if ('has_guirunning')
   highlight OverLength ctermbg=DarkBlue ctermfg=white guibg=#592929
   match OverLength /\%111v.\+/
 endif
+
+"
+" Filetype Maps
+"
+autocmd BufRead *.spark set filetype=html
 
 "
 " Python tweaks (from Sontek - http://github.com/sontek/dotfiles)
