@@ -80,9 +80,17 @@ scm_ps1() {
 
 # [hh:mm] username@host (git branch || svn revision) ~/working/directory
 # $
-#TODO Do some checking on whether term supports 256 colors
-PS1="$LIGHTBLUE[\$(date +%H:%M)] \u@\h $LIGHTRED\$(scm_ps1) $LIGHTYELLOW\w \n$EMPTY\$ $DARKGRAY"
-PS2="$CONTINUE> $DARKGRAY"
+# [hh:mm] username@host (git branch || svn revision) ~/working/directory
+# $
+# Pretty ugly hack for msys... need to figure out how to determine if my
+# console is 256 color capable
+if [ $OSTYPE = 'msys' ]; then
+  PS1="$GREEN[\$(date +%H:%M)] \u@\h $RED\$(scm_ps1) $YELLOW\w \n$EMPTY\$ $GRAY"
+  PS2="$CONTINUE> "
+else
+  PS1="$LIGHTBLUE[\$(date +%H:%M)] \u@\h $LIGHTRED\$(scm_ps1) $LIGHTYELLOW\w \n$EMPTY\$ $DARKGRAY"
+  PS2="$CONTINUE> "
+fi
 
 # Load any extra aliases
 if [ -f ~/.bash_aliases ]; then
