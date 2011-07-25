@@ -38,10 +38,11 @@
   upmaster = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD
   uprebase = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD &&  git checkout @{-1} && git rebase master
 
+  fmerge = merge --ff-only
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   lstat = log --stat --relative --abbrev-commit --date=local --pretty=format:'%C(white)%h %C(cyan)%cr %C(green)by %cn %Creset%n%C(yellow)%cd%n%s'
-  fmerge = merge --ff-only
   peeps = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
+  stache = !git add -A && git stash
 
 [log]
   date = local
