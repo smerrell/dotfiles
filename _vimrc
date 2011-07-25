@@ -1,10 +1,17 @@
-" Author: Sam Merrell (merrell.sam@gmail.com)
+" https://github.com/smerrell/dotfiles
 "
 
+"
 " Pathogen
+"
 filetype off
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+
+" ,v brings up .vimrc (thanks, sontek)
+" ,V reloads it (as long as you remember to save it first)
+map <leader>v :sp ~/.vimrc<CR><C-W>
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 set nocompatible " vim > vi mode.
 
@@ -136,6 +143,7 @@ set history=1000        " Remember a long command history
 set wildmenu            " Menu completion in command mode on <Tab>
 " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
 set wildmode=list:longest,full
+set wildignore+=*.o,*.obj,.git,*.pyc
 
 "
 " Per-Filetype Scripts
@@ -150,14 +158,16 @@ syntax on               " Enable per-filetype syntax highlighting
 " Key Mappings
 "
 
+" set working directory
+nnoremap <leader>. :lcd %:p:h<CR>
+" Paste from clipboard
+map <leader>p "+gP
+" Remove trailing whitespace
+map <leader>S :%s/\s\+$//<CR>:let @/=''<CR>
+
 
 " change <leader> from \ to ,
 let mapleader = ","
-
-if has("gui_win32")
-  " TFS / Visual Studio setup for gvim
-  nmap <F8> :!"\%VS_HOME\%\TF.exe" checkout %:p<cr>
-endif
 
 "
 " Abbrevs
