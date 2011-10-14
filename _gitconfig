@@ -1,6 +1,10 @@
+; vim: ft=gitconfig
+
 [user]
-  name = smerrell
+  name = Sam Merrell
   email = merrell.sam@gmail.com
+
+[core]
   editor = vim
 
 [color]
@@ -11,7 +15,7 @@
   interactive = auto
 
 [push]
-  default = matching
+  default = tracking
 
 [merge]
   tool = p4merge
@@ -22,17 +26,16 @@
   keepTemporaries = false
 
 [diff]
-  tool = p4diff
+  tool = p4merge
 
-[difftool "p4diff"]
-  cmd = /home/smerrell/Src/p4diff.sh "$LOCAL" "$REMOTE"
+[difftool "p4merge"]
+  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
 
 [alias]
-  # Git-tfs workflows
-  ct = tfs ct --build-default-comment
-  tfsrb = !git checkout master && git tfs pull && git checkout @{-1} && git rebase master
-  tfsrebase = !git stash && git checkout master && git tfs pull && git checkout @{-1} && git rebase master && git stash pop
-  tfsworkflow = !git checkout master && git tfs pull && git checkout @{-1} && git rebase master && git checkout master && git merge @{-1} --ff-only  && git tfs ct --build-default-comment
+  # Work flows
+  devlatest = !git checkout dev && git fetch origin && git merge origin/dev --ff-only
+  devrebase = !git checkout dev && git fetch origin && git merge origin/dev --ff-only && git checkout @{-1} && git rebase dev
+  devpush = !git checkout dev && git merge @{-1} --ff-only && git push
 
   # Github workflows
   upmaster = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD
@@ -42,12 +45,10 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   lstat = log --stat --relative --abbrev-commit --date=local --pretty=format:'%C(white)%h %C(cyan)%cr %C(green)by %cn %Creset%n%C(yellow)%cd%n%s'
   peeps = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
-  stache = !git add -A && git stash
+  stache = !git add -A && git stash save
 
 [log]
   date = local
 
 [github]
   user = smerrell
-[http]
-  sslverify = false

@@ -28,18 +28,12 @@
 [submodule "_vim/bundle/vimrepeat"]
 	path = _vim/bundle/vimrepeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule "_vim/bundle/acp"]
-	path = _vim/bundle/acp
-	url = https://github.com/vim-scripts/AutoComplPop.git
 [submodule "_vim/bundle/haml"]
 	path = _vim/bundle/haml
 	url = https://github.com/tpope/vim-haml.git
 [submodule "_vim/bundle/textile"]
 	path = _vim/bundle/textile
 	url = https://github.com/timcharper/textile.vim.git
-[submodule "_vim/bundle/gundo"]
-	path = _vim/bundle/gundo
-	url = https://github.com/sjl/gundo.vim
-[submodule "_vim/bundle/minibufexpl"]
-	path = _vim/bundle/minibufexpl
-	url = https://github.com/sontek/minibufexpl.vim
+[submodule "_vim/bundle/supertab"]
+	path = _vim/bundle/supertab
+	url = https://github.com/tsaleh/vim-supertab

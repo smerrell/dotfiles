@@ -163,7 +163,7 @@ nnoremap <leader>. :lcd %:p:h<CR>
 " Paste from clipboard
 map <leader>p "+gP
 " Remove trailing whitespace
-map <leader>S :%s/\s\+$//<CR>:let @/=''<CR>
+map <leader>e :%s/\s\+$//<CR>:let @/=''<CR>
 
 
 " change <leader> from \ to ,
@@ -172,10 +172,10 @@ let mapleader = ","
 "
 " Abbrevs
 "
-iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
-iab xday <c-r>=strftime("%d/%m/%y")<cr>
+iab xdate <c-r>=strftime("%m/%d/%y %H:%M:%S")<cr>
+iab xday <c-r>=strftime("%m/%d/%y")<cr>
 iab xtime <c-r>=strftime("%H:%M:%S")<cr>
-iab xname samerrel
+iab xname Sam Merrell
 
 " execute selected script
 "map <C-h> :py EvaluateCurrentRange()<CR>
@@ -198,6 +198,7 @@ endif
 " Filetype Maps
 "
 autocmd BufRead *.spark set filetype=html
+autocmd BufRead *.rst set tw=80
 
 "
 " Python tweaks (from Sontek - http://github.com/sontek/dotfiles)
