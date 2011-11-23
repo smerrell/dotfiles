@@ -2,4 +2,4 @@ alias pd="pushd $1"
 
 # Colors!
 alias ls='ls --color=always'
-alias grep='grep --color=auto'
+#alias grep='grep --color=auto'
