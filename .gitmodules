@@ -37,3 +37,15 @@
 [submodule "_vim/bundle/supertab"]
 	path = _vim/bundle/supertab
 	url = https://github.com/tsaleh/vim-supertab
+[submodule "_vim/bundle/vim-less"]
+	path = _vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
+[submodule "_vim/bundle/vim-css-color"]
+	path = _vim/bundle/vim-css-color
+	url = https://github.com/skammer/vim-css-color
+[submodule "_vim/bundle/vim-css3-syntax"]
+	path = _vim/bundle/vim-css3-syntax
+	url = https://github.com/hail2u/vim-css3-syntax.git
+[submodule "_vim/bundle/scss-syntax"]
+	path = _vim/bundle/scss-syntax
+	url = https://github.com/cakebaker/scss-syntax.vim
