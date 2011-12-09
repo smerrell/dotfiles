@@ -1,4 +1,5 @@
 alias pd="pushd $1"
+alias cdp="cd -"
 
 # Colors!
 alias ls='ls --color=always'
