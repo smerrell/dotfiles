@@ -1,6 +1,9 @@
 " https://github.com/smerrell/dotfiles
 "
 
+set nocompatible        " vim > vi mode.
+let mapleader = ","     " change <leader> from \ to ,
+
 "
 " Pathogen
 "
@@ -9,11 +12,11 @@ call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
 " ,v brings up .vimrc (thanks, sontek)
-" ,V reloads it (as long as you remember to save it first)
 map <leader>v :sp ~/.vimrc<CR><C-W>
+
+" ,V reloads it (as long as you remember to save it first)
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
-set nocompatible " vim > vi mode.
 
 set t_Co=256 " For 256 color mode support
 if has('gui_running')
@@ -48,7 +51,15 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" and lets make these all work in insert mode too ( <C-O> makes next cmd
+" happen as if in command mode )
+imap <C-W> <C-O><C-W>
 
+" Window resizing made easy
+map <A-k> <C-w>+
+map <A-j> <C-w>-
+map <A-l> <C-w>>
+map <A-h> <C-w><
 "
 " Tabs
 "
@@ -78,9 +89,9 @@ set hlsearch            " Highlight searches and search results
 "
 "set guifont=DejaVu_Sans_Mono:h10:cANSI
 if has("gui_gtk2")
-  set guifont=Anonymous\ Pro\ 11,DejaVu\ Sans\ Mono\ 11
+  set guifont=Ubuntu\ Mono\ 11,Anonymous\ Pro\ 11,DejaVu\ Sans\ Mono\ 11
 elseif has("gui_win32")
-  set guifont=Anonymous\ Pro:h11,DejaVu\ Sans\ Mono:h11,Consolas:h11
+  set guifont=Ubuntu\ Mono:h11,Anonymous\ Pro:h11,DejaVu\ Sans\ Mono:h11,Consolas:h11
 endif
 
 set number              " Show line numbers
@@ -160,28 +171,26 @@ syntax on               " Enable per-filetype syntax highlighting
 
 " set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
+
 " Paste from clipboard
 map <leader>p "+gP
+
 " Remove trailing whitespace
-map <leader>S :%s/\s\+$//<CR>:let @/=''<CR>
+map <leader>e :%s/\s\+$//<CR>:let @/=''<CR>
 
-
-" change <leader> from \ to ,
-let mapleader = ","
+" Toggle tasklist
+map <leader>td <Plug>TaskList
 
 "
 " Abbrevs
 "
-iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
-iab xday <c-r>=strftime("%d/%m/%y")<cr>
+iab xdate <c-r>=strftime("%m/%d/%y %H:%M:%S")<cr>
+iab xday <c-r>=strftime("%m/%d/%y")<cr>
 iab xtime <c-r>=strftime("%H:%M:%S")<cr>
-iab xname samerrel
+iab xname Sam Merrell
 
 " execute selected script
 "map <C-h> :py EvaluateCurrentRange()<CR>
-
-" Show tasks in current buffer
-"map T :TaskList<CR><C-w><Left>
 
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
@@ -198,6 +207,15 @@ endif
 " Filetype Maps
 "
 autocmd BufRead *.spark set filetype=html
+autocmd BufRead *.rst set tw=80
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType spark set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
 
 "
 " Python tweaks (from Sontek - http://github.com/sontek/dotfiles)

@@ -1,16 +1,15 @@
-# Author: Sam Merrell (merrell.sam@gmail.com)
+# vim: set ft=sh
+# https://github.com/smerrell/dotfiles
 #
 
-# Set up work-specific environment variables
-if [ -f ~/.workenv ]
-then
-  . ~/.workenv
-fi
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# downside of using MSYS
+LS_COLORS="di=01;36:"
+export LS_COLORS
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 #
 # Initialization
@@ -102,6 +101,7 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-#
-# Functions
-#
+function gtab() {
+  gvim --remote-tab-silent "$@" & :
+}
+
