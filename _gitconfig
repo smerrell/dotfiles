@@ -33,9 +33,9 @@
 
 [alias]
   # Work flows
-  devlatest = !git checkout dev && git fetch origin && git merge origin/dev --ff-only
-  devrebase = !git checkout dev && git fetch origin && git merge origin/dev --ff-only && git checkout @{-1} && git rebase dev
-  devpush = !git checkout dev && git merge @{-1} --ff-only && git push
+  blatest = !sh -c 'git checkout $1 && git fetch origin && git merge origin/$1 --ff-only' -
+  brebase = !sh -c 'git checkout $1 && git fetch origin && git merge origin/$1 --ff-only && git checkout @{-1} && git rebase $1' -
+  bpush = !sh -c 'git checkout $1 && git merge @{-1} --ff-only && git push' -
 
   # Github workflows
   upmaster = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD
