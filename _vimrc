@@ -36,12 +36,6 @@ set matchtime=2         " for .2 seconds
 set linebreak           " Don't wrap text in the middle of a word
 set mouse=a             " Always enable mouse
 set clipboard+=unnamed  " Makes using clipboard easier
-" Navigate by display line NOT by actual line
-nnoremap j gj
-nnoremap k gk
-" Navigate by actual line NOT by display line
-nnoremap gj j
-nnoremap k gk
 
 "
 " Windowing
@@ -154,7 +148,13 @@ set history=1000        " Remember a long command history
 set wildmenu            " Menu completion in command mode on <Tab>
 " First list the available options and complete the longest common part, then have further <Tab>s cycle through the possibilities:
 set wildmode=list:longest,full
-set wildignore+=*.o,*.obj,.git,*.pyc
+set wildignore+=*.o,*.obj,.git,*.pyc.
+
+" Linux / Mac
+set wildignore+=*/.git/*
+
+" Windows
+set wildignore+=.git\*,Build\*,.sass-cache\*
 
 "
 " Per-Filetype Scripts
@@ -213,6 +213,7 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType spark set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
