@@ -1,1 +1,8 @@
-set clipboard=unnamed  " Makes using clipboard easier
+" Bring in the standard vimrc
+source \home\smerrell\.vimrc
+
+" VsVim currently doesn't like clipboard+=unnamed for some reason
+set clipboard=unnamed
+
+" VsVim chokes on <slient> as well as <Bar>:echo<CR>
+nnoremap <Space> :nohlsearch<CR>
