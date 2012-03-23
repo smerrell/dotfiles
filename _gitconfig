@@ -5,7 +5,7 @@
   email = merrell.sam@gmail.com
 
 [core]
-  editor = vim
+  editor = gvim
 
 [color]
   pager = true
