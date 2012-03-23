@@ -1,13 +1,25 @@
 #!/usr/bin/env bash
+uname=`uname -s`
+
 function link_file {
   source="${PWD}/$1"
-  target="${HOME}/${i/_/.}"
+  target="${HOME}/${1/_/.}"
 
-  if [ -e "${target}" ]; then
-    mv $target $target.bak
+  #if [ -e "${target}" ]; then
+    #mv $target $target.bak
+  #fi
+
+  if [[ "$uname" = MINGW* || "$uname" = CYGWIN* ]]; then
+    sourcestep=${source:2}
+    source=${sourcestep//\//\\}
+    targetstep=${target:2}
+    target=${targetstep//\//\\}
+
+    $COMSPEC \/c link.bat\ ${HOMEDRIVE}$source\ ${HOMEDRIVE}$target
+    return
+  else
+    ln -sfv ${source} ${target}
   fi
-
-  ln -sfv ${source} ${target}
 }
 
 if [ "$1" = "vim" ]; then
@@ -18,9 +30,7 @@ if [ "$1" = "vim" ]; then
 else
   for i in _*
   do
-      source="${PWD}/$i"
-      target="${HOME}/${i/_/.}"
-      ln -sfv ${source} ${target}
+    link_file $i
   done
 fi
 
