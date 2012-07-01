@@ -9,6 +9,8 @@ platform=$(uname)
 if [[ $platform == Cygwin* ]]; then
   LS_COLORS="di=01;36:"
   export LS_COLORS
+elif [[ $platform == Darwin* ]]; then
+  export GIT_EDITOR='mvim -f'
 fi
 
 # If not running interactively, don't do anything
