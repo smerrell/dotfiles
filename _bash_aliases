@@ -1,6 +1,9 @@
-alias pd="pushd $1"
-alias cdp="cd -"
+alias pd='pushd $1'
+alias cdp='cd -'
 
-# Colors!
-alias ls='ls --color=always'
-#alias grep='grep --color=auto'
+if [[ $platform == Darwin* ]]; then
+  alias gvim='mvim'
+  alias ls='ls -G'
+elif [[ $platform == Linux* ]]; then
+  alias grep='grep --color=auto'
+fi

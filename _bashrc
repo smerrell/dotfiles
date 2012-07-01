@@ -2,9 +2,14 @@
 # https://github.com/smerrell/dotfiles
 #
 
+
+platform=$(uname)
 # downside of using MSYS
-LS_COLORS="di=01;36:"
-export LS_COLORS
+
+if [[ $platform == Cygwin* ]]; then
+  LS_COLORS="di=01;36:"
+  export LS_COLORS
+fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -26,7 +31,7 @@ if [ -f ~/.dircolors ]; then
 fi
 
 # see environ manfile
-export EDITOR=vim       # Default Editor
+export EDITOR=gvim       # Default Editor
 export VISUAL=$EDITOR   # Visual not really used differently from EDITOR anymore
 export LESS='-iMR'      # Case insensite search, verbose prompting and raw output
 export PAGER=less       # Used to display text / man files
@@ -105,3 +110,5 @@ function gtab() {
   gvim --remote-tab-silent "$@" & :
 }
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

@@ -83,9 +83,11 @@ set hlsearch            " Highlight searches and search results
 "
 "set guifont=DejaVu_Sans_Mono:h10:cANSI
 if has("gui_gtk2")
-  set guifont=Ubuntu\ Mono\ 11,Anonymous\ Pro\ 11,DejaVu\ Sans\ Mono\ 11
+  set guifont=Ubuntu\ Mono\ 14,Anonymous\ Pro\ 14,DejaVu\ Sans\ Mono\ 14
 elseif has("gui_win32")
-  set guifont=Ubuntu\ Mono:h11,Anonymous\ Pro:h11,DejaVu\ Sans\ Mono:h11,Consolas:h11
+  set guifont=Ubuntu\ Mono:h14,Anonymous\ Pro:h14,DejaVu\ Sans\ Mono:h14,Consolas:h14
+elseif has("gui_macvim")
+  set guifont=Ubuntu\ Mono:h14,Anonymous\ Pro:h14,Menlo:h14
 endif
 
 set number              " Show line numbers
