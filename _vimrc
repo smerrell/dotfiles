@@ -11,31 +11,31 @@ filetype off
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
+" ======================
+" Basics
+" ======================
+set mouse=a             " Always enable mouse
+set clipboard+=unnamed  " Makes using clipboard easier
+set t_Co=256            " For 256 color mode support
+set number              " Show line numbers
+set numberwidth=1       " Try to use only 1 col when possible
+set nowrap              " Line wrapping off
+set cursorline          " Highlight line cursor is on
+
 " ,v brings up .vimrc (thanks, sontek)
-map <leader>v :sp ~/.vimrc<CR><C-W>
-
 " ,V reloads it (as long as you remember to save it first)
+map <leader>v :sp ~/.vimrc<CR><C-W>
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-
-
-set t_Co=256 " For 256 color mode support
-if has('gui_running')
-  colorscheme solarized
-else
-  colorscheme wombat256mod
-endif
 
 "
 " Moving around / editing
 "
 set nostartofline       " Avoid moving cursor to BOL when moving
 set scrolloff=5         " Keep 5 lines (top/bottom) for scope
-set backspace=2         " makes backspace work normally
+set backspace=2         " Allow backspace over autoindent, EOL, and BOL
 set showmatch           " Show matched paren when balanced
 set matchtime=2         " for .2 seconds
 set linebreak           " Don't wrap text in the middle of a word
-set mouse=a             " Always enable mouse
-set clipboard+=unnamed  " Makes using clipboard easier
 
 "
 " Windowing
@@ -76,12 +76,27 @@ set smartcase           " Unless uppercase used in search expr.
 set gdefault            " Default to /g global replace
 set hlsearch            " Highlight searches and search results
 " clear highlighted search using the space bar
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 "
 " Display
 "
-"set guifont=DejaVu_Sans_Mono:h10:cANSI
+
+if has('gui_running')
+  colorscheme solarized
+
+  " Remove toolbar
+  set guioptions-=T
+  " Remove right-hand scroll bar
+  set guioptions-=r
+  " Removes the menu
+  set guioptions-=m
+  " Use console dialogs instead of popup dialogs for simple choices
+  set guioptions+=c
+else
+  colorscheme wombat256mod
+endif
+
 if has("gui_gtk2")
   set guifont=Ubuntu\ Mono\ 14,Anonymous\ Pro\ 14,DejaVu\ Sans\ Mono\ 14
 elseif has("gui_win32")
@@ -90,16 +105,6 @@ elseif has("gui_macvim")
   set guifont=Ubuntu\ Mono:h14,Anonymous\ Pro:h14,Menlo:h14
 endif
 
-set number              " Show line numbers
-set numberwidth=1       " Try to use only 1 col when possible
-"set textwidth=110       " Sets the max width text can be before vim inserts a linebreak
-" Highlights text after going over the max text width
-set nowrap  " Line wrapping off
-set guioptions+=c       " Use console dialogs instead of popup dialogs for simple choices
-set guioptions-=T       " Remove toolbar
-set guioptions-=r       " Remove right-hand scroll bar
-set guioptions-=m       " Removes the menu
-set cursorline
 
 "
 " Messages, Info, & Status
@@ -117,12 +122,13 @@ set ruler               " Display position in the file
 "
 " Tabs / indentation
 "
-"set tabstop=4           " Use 4 spaces for <tab>
 set shiftwidth=2        " Indent level is 2 spaces wide
 set softtabstop=2       " <BS> over an autoindent deletes shiftwidth worth of spaces
 set smarttab            " Insert blanks properly at beginning of a line
 set autoindent          " Copy indent from current line when starting a new line
 set expandtab           " Use spaces not tabs
+
+" Show all tab chars and trailing whitespace
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set list
 
@@ -183,27 +189,11 @@ map <leader>e :%s/\s\+$//<CR>:let @/=''<CR>
 " Toggle tasklist
 map <leader>td <Plug>TaskList
 
-"
-" Abbrevs
-"
-iab xdate <c-r>=strftime("%m/%d/%y %H:%M:%S")<cr>
-iab xday <c-r>=strftime("%m/%d/%y")<cr>
-iab xtime <c-r>=strftime("%H:%M:%S")<cr>
-iab xname Sam Merrell
-
-" execute selected script
-"map <C-h> :py EvaluateCurrentRange()<CR>
-
 " NERD Tree Settings
 map <F4> :NERDTreeFind<CR>
 map <F3> :NERDTreeToggle<CR>
 
 let Tlist_GainFocus_On_ToggleOpen=1
-
-if ('has_guirunning')
-  highlight OverLength ctermbg=DarkBlue ctermfg=white guibg=#592929
-  match OverLength /\%111v.\+/
-endif
 
 "
 " Filetype Maps
@@ -219,30 +209,3 @@ autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
-
-"
-" Python tweaks (from Sontek - http://github.com/sontek/dotfiles)
-"
-
-" treat html files as django templates
-autocmd BufRead *.html set filetype=htmldjango
-
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
-autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-
-if has("python")
-python << EOF
-import os
-import sys
-import vim
-# lets us use 'gf' to go to files imported
-for p in sys.path:
-    if os.path.isdir(p):
-        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-
-# lets us execute the highlighted portion of the script
-def EvaluateCurrentRange():
-  eval(compile('\n'.join(vim.current.range),'','exec'),globals())
-EOF
-endif
