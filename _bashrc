@@ -2,11 +2,10 @@
 # https://github.com/smerrell/dotfiles
 #
 
-
 platform=$(uname)
-# downside of using MSYS
 
-if [[ $platform == Cygwin* ]]; then
+if [[ $platform == Cygwin* || $platform == MINGW* ]]; then
+  # downside of using MSYS
   LS_COLORS="di=01;36:"
   export LS_COLORS
 elif [[ $platform == Darwin* ]]; then
@@ -95,7 +94,7 @@ scm_ps1() {
 # console is 256 color capable
 if [ $OSTYPE = 'msys' ]; then
   PS1="$GREEN[\$(date +%H:%M)] \u@\h $RED\$(scm_ps1) $YELLOW\w \n$EMPTY\$ $GRAY"
-  PS2="$CONTINUE> "
+  PS2="$GRAY> $GRAY"
 else
   PS1="$LIGHTBLUE[\$(date +%H:%M)] \u@\h $LIGHTRED\$(scm_ps1) $LIGHTYELLOW\w \n$EMPTY\$ $DARKGRAY"
   PS2="$CONTINUE> "
