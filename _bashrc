@@ -18,13 +18,6 @@ fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 #
-# Initialization
-#
-if [ -d "${HOME}/bin" ] ; then
-    PATH=${HOME}/bin:${PATH}
-fi
-
-#
 # Dircolors
 #
 if [ -f ~/.dircolors ]; then
