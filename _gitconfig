@@ -54,9 +54,14 @@
 
   # Working with files / history
   revive = !sh -c 'git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"' -
+  new = log master.. --reverse
+  di = diff --staged
 
   # Branch / Remote management
+
+  # prunes branches that are already merged into the branch name passed in
   pbranch = !sh -c 'git branch --merged "$1" | grep -v "$1"$ | xargs git branch -d' -
+  topic = checkout master -b 
 
   # Misc
   fmerge = merge --ff-only
