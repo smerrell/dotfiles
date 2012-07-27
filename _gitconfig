@@ -7,6 +7,10 @@
 [core]
   editor = gvim
 
+[help]
+  # git lgo corrected to git log. Yay!
+  autocorrect = -1
+
 [color]
   pager = true
   status = auto
@@ -24,9 +28,11 @@
   cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
   trustExitCode = false
   keepTemporaries = false
+  keepBackup = false
 
 [diff]
   tool = p4merge
+  renames = copies
 
 [difftool "p4merge"]
   cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
