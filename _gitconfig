@@ -47,11 +47,19 @@
   upmaster = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD
   uprebase = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD &&  git checkout @{-1} && git rebase master
 
-  fmerge = merge --ff-only
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-  lstat = log --stat --relative --abbrev-commit --date=local --pretty=format:'%C(white)%h %C(cyan)%cr %C(green)by %cn %Creset%n%C(yellow)%cd%n%s'
+  # Log aliases
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)- %an%Creset' --abbrev-commit --date=relative
+  lstat = log --stat --relative --abbrev-commit --date=local --pretty=format:'%C(white)%h %C(cyan)%cr %C(green)by %cn %Creset%C(yellow)%n%s%Creset'
   peeps = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
+
+  # Working with files / history
   revive = !sh -c 'git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"' -
+
+  # Branch / Remote management
+  pbranch = !sh -c 'git branch --merged "$1" | grep -v "$1"$ | xargs git branch -d' -
+
+  # Misc
+  fmerge = merge --ff-only
   stache = !git add -A && git stash save
 
 [log]
