@@ -22,8 +22,12 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# Since OSX Lion and brew doesn't have this setup.
-# Need it for __git_ps1
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+command -v brew > /dev/null
+if [ $? -eq 0 ]; then
+  # Since OSX Lion and brew doesn't have this setup.
+  # Need it for __git_ps1
+  brew_path=`brew --prefix`/etc/bash_completion
+  if [ -f $brew_path ]; then
+    . `brew --prefix`/etc/bash_completion
+  fi
 fi
