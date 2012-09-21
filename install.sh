@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 uname=`uname -s`
 
-function link_file {
+function link_dotfile {
   source="${PWD}/$1"
   target="${HOME}/${1/_/.}"
 
-  #if [ -e "${target}" ]; then
-    #mv $target $target.bak
-  #fi
+  symlink_file $source $target
+}
 
+function symlink_file {
+  source=$1
+  target=$2
+
+  # For Windows
   if [[ "$uname" = MINGW* || "$uname" = CYGWIN* ]]; then
     sourcestep=${source:2}
     source=${sourcestep//\//\\}
@@ -22,17 +26,26 @@ function link_file {
   fi
 }
 
-if [ "$1" = "vim" ]; then
-  for i in _vim*
+function link_bin {
+  if [ ! -d ${HOME}/bin ]; then
+    echo 'Making ~/bin directory'
+    mkdir -p ${HOME}/bin
+  fi
+
+  for binfile in bin/*
   do
-    link_file $1
+    source="${PWD}/${binfile}"
+    target="${HOME}/${binfile}"
+    symlink_file $source $target
   done
-else
-  for i in _*
-  do
-    link_file $i
-  done
-fi
+}
+
+for i in _*
+do
+  link_dotfile $i
+done
+
+link_bin
 
 git submodule sync
 git submodule init
