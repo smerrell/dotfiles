@@ -66,6 +66,7 @@
   # Misc
   fmerge = merge --ff-only
   stache = !git add -A && git stash save
+  cia = commit --amend -C HEAD
 
 [log]
   date = local
