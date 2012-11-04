@@ -1,5 +1,6 @@
 alias pd='pushd $1'
 alias cdp='cd -'
+alias ssha='. ~/bin/sshagent'
 
 if [[ $platform == Darwin* ]]; then
   alias gvim='mvim'
