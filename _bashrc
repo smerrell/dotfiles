@@ -86,10 +86,10 @@ scm_ps1() {
 # Pretty ugly hack for msys... need to figure out how to determine if my
 # console is 256 color capable
 if [ $OSTYPE = 'msys' ]; then
-  PS1="$GREEN[\$(date +%H:%M)] \u@\h $RED\$(scm_ps1) $YELLOW\w \n$EMPTY\$ $GRAY"
+  PS1="\[\033]0;\w\007$GREEN[\$(date +%H:%M)] \u@\h $RED\$(scm_ps1) $YELLOW\w \n$EMPTY\$ $GRAY"
   PS2="$GRAY> $GRAY"
 else
-  PS1="$LIGHTBLUE[\$(date +%H:%M)] \u@\h $LIGHTRED\$(scm_ps1) $LIGHTYELLOW\w \n$EMPTY\$ $DARKGRAY"
+  PS1="\[\033]0;\w\007$LIGHTBLUE[\$(date +%H:%M)] \u@\h $LIGHTRED\$(scm_ps1) $LIGHTYELLOW\w \n$EMPTY\$ $DARKGRAY"
   PS2="$CONTINUE> "
 fi
 
