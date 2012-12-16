@@ -48,8 +48,8 @@
   uprebase = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD &&  git checkout @{-1} && git rebase master
 
   # Log aliases
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)- %an%Creset' --abbrev-commit --date=relative
-  lstat = log --stat --relative --abbrev-commit --date=local --pretty=format:'%C(white)%h %C(cyan)%cr %C(green)by %cn %Creset%C(yellow)%n%s%Creset'
+  lg = log --graph --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate
+  lstat = log --stat --abbrev-commit --date=local --pretty=format:'%C(yellow)%h %C(red)%d%C(reset)%C(cyan)%cr %C(green)[%cn] %Creset%C(yellow)%n%s%Creset'
   peeps = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
 
   # Working with files / history
@@ -60,8 +60,8 @@
   # Branch / Remote management
 
   # prunes branches that are already merged into the branch name passed in
-  pbranch = !sh -c 'git branch --merged "$1" | grep -v "$1"$ | xargs git branch -d' -
-  topic = checkout master -b 
+  pbranch = !sh -c 'git branch --merged "${1:-master}" | grep -v "${1:-master}"$ | xargs git branch -d' -
+  topic = checkout master -b
 
   # Misc
   fmerge = merge --ff-only
