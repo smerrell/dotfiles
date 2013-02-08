@@ -198,6 +198,12 @@ let Tlist_GainFocus_On_ToggleOpen=1
 "
 " Filetype Maps
 "
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+"set statusline=%<\ %n:%f\ %m%r%y%{SyntasticStatuslineFlag()}%=line:\ %l\ of\ %L,\ col:\ %c%V,\
+
 autocmd BufRead *.spark set filetype=html
 autocmd BufRead *.rst set tw=80
 autocmd FileType python set omnifunc=pythoncomplete#Complete

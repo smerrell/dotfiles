@@ -73,3 +73,6 @@
 [submodule "_vim/bundle/PowerShell"]
 	path = _vim/bundle/PowerShell
 	url = git://github.com/vim-scripts/Windows-PowerShell-Syntax-Plugin.git
+[submodule "_vim/bundle/syntastic"]
+	path = _vim/bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git

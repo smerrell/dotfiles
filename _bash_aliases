@@ -1,6 +1,7 @@
 alias pd='pushd $1'
 alias cdp='cd -'
 alias ssha='. ~/bin/sshagent'
+alias server='open http://localhost:8000 && python -m SimpleHTTPServer'
 
 if [[ $platform == Darwin* ]]; then
   alias gvim='mvim'
