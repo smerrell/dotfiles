@@ -33,39 +33,47 @@
 [diff]
   tool = p4merge
   renames = copies
+  renamelimit = 2785
 
 [difftool "p4merge"]
   cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
 
 [alias]
   # Work flows
-  blatest = !sh -c 'git checkout $1 && git fetch origin && git merge origin/$1 --ff-only' -
-  brebase = !sh -c 'git checkout $1 && git fetch origin && git merge origin/$1 --ff-only && git checkout @{-1} && git rebase $1' -
-  bpush = !sh -c 'git checkout $1 && git merge @{-1} --ff-only && git push' -
+
+  blatest = !sh -c 'git checkout ${1:-master} && git fetch origin && git merge origin/${1:-master} --ff-only' -
+  brebase = !sh -c 'git checkout ${1:-master} && git fetch origin && git merge origin/${1:-master} --ff-only && git checkout @{-1} && git rebase $1' -
+  bpush = !sh -c 'git checkout ${1:-master} && git merge @{-1} --ff-only && git push' -
 
   # Github workflows
+
   upmaster = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD
   uprebase = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD &&  git checkout @{-1} && git rebase master
 
   # Log aliases
+
   lg = log --graph --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate
-  lstat = log --stat --abbrev-commit --date=local --pretty=format:'%C(yellow)%h %C(red)%d%C(reset)%C(cyan)%cr %C(green)[%cn] %Creset%C(yellow)%n%s%Creset'
+  ll = log --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate
+  lstat = log --numstat --stat --name-status --abbrev-commit --date=local --pretty=format:'%C(yellow)%h %C(red)%d%C(reset)%C(cyan)%cr %C(green)[%cn] %Creset%C(yellow)%n%s%Creset'
   peeps = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
 
   # Working with files / history
+
   revive = !sh -c 'git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"' -
-  new = log master.. --reverse
+  new = log --pretty=format:'%C(yellow)%h%C(reset) - %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate master..
+  lnew = log master.. --reverse
   di = diff --staged
 
   # Branch / Remote management
 
-  # prunes branches that are already merged into the branch name passed in
+  # prunes branches that are already merged into the branch name passed in or master
   pbranch = !sh -c 'git branch --merged "${1:-master}" | grep -v "${1:-master}"$ | xargs git branch -d' -
   topic = checkout master -b
 
   # Misc
+
   fmerge = merge --ff-only
-  stache = !git add -A && git stash save
+  stache = stash save -u
   cia = commit --amend -C HEAD
 
 [log]
