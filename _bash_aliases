@@ -2,10 +2,14 @@ alias pd='pushd $1'
 alias cdp='cd -'
 alias ssha='. ~/bin/sshagent'
 alias server='open http://localhost:8000 && python -m SimpleHTTPServer'
+alias bake='bundle exec rake'
 
 if [[ $platform == Darwin* ]]; then
   alias gvim='mvim'
   alias ls='ls -G'
+  alias showhidden='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
+  alias hidehidden='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 elif [[ $platform == Linux* ]]; then
   alias grep='grep --color=auto'
 fi
+
