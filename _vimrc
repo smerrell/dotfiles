@@ -84,6 +84,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 if has('gui_running')
   colorscheme solarized
+  set bg=dark
 
   " Remove toolbar
   set guioptions-=T
@@ -102,7 +103,7 @@ if has("gui_gtk2")
 elseif has("gui_win32")
   set guifont=Ubuntu\ Mono:h14,Anonymous\ Pro:h14,DejaVu\ Sans\ Mono:h14,Consolas:h14
 elseif has("gui_macvim")
-  set guifont=Ubuntu\ Mono:h14,Anonymous\ Pro:h14,Menlo:h14
+  set guifont=Ubuntu\ Mono:h16,Anonymous\ Pro:h16,Menlo:h16
 endif
 
 
