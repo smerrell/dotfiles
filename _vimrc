@@ -65,7 +65,6 @@ map tt :tabedit<Space>
 map tn :tabnext<Space>
 map tm :tabm<Space>
 map <silent><C-N> :tabn<CR>
-map <silent><C-P> :tabp<CR>
 
 "
 " Search / Replace
