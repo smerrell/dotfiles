@@ -64,6 +64,11 @@ LIGHTYELLOW="\[\033[38;5;229m\]"
 CONTINUE="\[\033[38;5;242m\]"
 DARKGRAY="\[\033[38;5;247m\]"
 
+# Solarized
+SOLRED="\[\033[0;31m\]"
+SOLBLUE="\[\033[0;34m\]"
+SOLBASE="\[\033[1;34m\]"
+SOLBASE01="\[\033[1;32m\]"
 #
 # Merges Git and SVN info to make the PS1 a little cleaner looking
 # Got this from: http://www.codeography.com/2009/05/26/speedy-bash-prompt-git-and-subversion-integration.html
@@ -92,6 +97,10 @@ else
   PS1="\[\033]0;\w\007$LIGHTBLUE[\$(date +%H:%M)] \u@\h $LIGHTRED\$(scm_ps1) $LIGHTYELLOW\w \n$EMPTY\$ $DARKGRAY"
   PS2="$CONTINUE> "
 fi
+
+function presentation {
+  PS1="\[\033]0;\w\007$SOLBLUE\u@\h $SOLRED\$(scm_ps1) $SOLBASE\w \n$DARKGRAY\$ $SOLBASE01"
+}
 
 # Load any extra aliases
 if [ -f ~/.bash_aliases ]; then

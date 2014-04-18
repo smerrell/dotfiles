@@ -73,3 +73,6 @@
 [submodule "_vim/bundle/supertab"]
 	path = _vim/bundle/supertab
 	url = git://github.com/ervandew/supertab.git
+[submodule "_vim/bundle/vim-jade"]
+	path = _vim/bundle/vim-jade
+	url = https://github.com/digitaltoad/vim-jade.git
