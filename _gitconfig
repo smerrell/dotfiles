@@ -6,6 +6,7 @@
 
 [core]
   editor = gvim
+  excludesfile = ~/.gitignore_global
 
 [help]
   # git lgo corrected to git log. Yay!
@@ -75,9 +76,19 @@
   fmerge = merge --ff-only
   stache = stash save -u
   cia = commit --amend -C HEAD
+  rbc = rebase --continue
+  req = "!f() { git fetch origin refs/pull/$1/head:pr/$1; } ; f"
 
 [log]
   date = local
 
 [github]
   user = smerrell
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
