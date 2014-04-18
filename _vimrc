@@ -109,7 +109,6 @@ endif
 "
 " Messages, Info, & Status
 "
-set vb t_vb=            " No bells. Period.
 set novisualbell        " No blinking
 set noerrorbells        " No noise
 set cmdheight=2         " Cmd bar 2 rows high
@@ -204,6 +203,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 "set statusline=%<\ %n:%f\ %m%r%y%{SyntasticStatuslineFlag()}%=line:\ %l\ of\ %L,\ col:\ %c%V,\
 
+autocmd BufRead * set vb t_vb=            " No bells. Period.
 autocmd BufRead *.spark set filetype=html
 autocmd BufRead *.rst set tw=80
 autocmd FileType python set omnifunc=pythoncomplete#Complete
