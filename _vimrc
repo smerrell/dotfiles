@@ -94,13 +94,16 @@ if has('gui_running')
   " Use console dialogs instead of popup dialogs for simple choices
   set guioptions+=c
 else
-  colorscheme wombat256mod
+  colorscheme solarized
+  if $PRESENTATION == "true"
+    set bg=light
+  endif
 endif
 
 if has("gui_gtk2")
-  set guifont=Ubuntu\ Mono\ 14,Anonymous\ Pro\ 14,DejaVu\ Sans\ Mono\ 14
+  set guifont=Ubuntu\ Mono\ 16,Anonymous\ Pro\ 16,DejaVu\ Sans\ Mono\ 16
 elseif has("gui_win32")
-  set guifont=Ubuntu\ Mono:h14,Anonymous\ Pro:h14,DejaVu\ Sans\ Mono:h14,Consolas:h14
+  set guifont=Ubuntu\ Mono:h16,Anonymous\ Pro:h16,DejaVu\ Sans\ Mono:h16,Consolas:h14
 elseif has("gui_macvim")
   set guifont=Ubuntu\ Mono:h16,Anonymous\ Pro:h16,Menlo:h16
 endif
