@@ -71,8 +71,11 @@
   url = git://github.com/SirVer/ultisnips.git
   ignore = dirty
 [submodule "_vim/bundle/supertab"]
-	path = _vim/bundle/supertab
-	url = git://github.com/ervandew/supertab.git
+  path = _vim/bundle/supertab
+  url = git://github.com/ervandew/supertab.git
 [submodule "_vim/bundle/vim-jade"]
-	path = _vim/bundle/vim-jade
-	url = https://github.com/digitaltoad/vim-jade.git
+  path = _vim/bundle/vim-jade
+  url = https://github.com/digitaltoad/vim-jade.git
+[submodule "_vim/bundle/vim-tmux-navigator"]
+  path = _vim/bundle/vim-tmux-navigator
+  url = git://github.com/christoomey/vim-tmux-navigator.git
