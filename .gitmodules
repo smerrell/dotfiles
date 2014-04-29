@@ -79,3 +79,6 @@
 [submodule "_vim/bundle/vim-tmux-navigator"]
   path = _vim/bundle/vim-tmux-navigator
   url = git://github.com/christoomey/vim-tmux-navigator.git
+[submodule "_vim/bundle/vim-airline"]
+  path = _vim/bundle/vim-airline
+  url = https://github.com/bling/vim-airline

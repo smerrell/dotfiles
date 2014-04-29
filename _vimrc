@@ -197,16 +197,15 @@ map <F3> :NERDTreeToggle<CR>
 
 let Tlist_GainFocus_On_ToggleOpen=1
 
+" Airline config
+let g:airline#extensions#tabline#enabled = 1 " Shows buffers if no tabs open
+let g:airline_powerline_fonts = 1
+
 "
 " Filetype Maps
 "
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-"set statusline=%<\ %n:%f\ %m%r%y%{SyntasticStatuslineFlag()}%=line:\ %l\ of\ %L,\ col:\ %c%V,\
-
 autocmd BufRead * set vb t_vb=            " No bells. Period.
+autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 autocmd BufRead *.spark set filetype=html
 autocmd BufRead *.rst set tw=80
 autocmd FileType python set omnifunc=pythoncomplete#Complete
