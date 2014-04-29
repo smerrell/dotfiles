@@ -101,11 +101,11 @@ else
 endif
 
 if has("gui_gtk2")
-  set guifont=Ubuntu\ Mono\ 16,Anonymous\ Pro\ 16,DejaVu\ Sans\ Mono\ 16
+  set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 16,Ubuntu\ Mono\ 16,Anonymous\ Pro\ 16,DejaVu\ Sans\ Mono\ 16
 elseif has("gui_win32")
-  set guifont=Ubuntu\ Mono:h16,Anonymous\ Pro:h16,DejaVu\ Sans\ Mono:h16,Consolas:h14
+  set guifont=Ubuntu\ Mono\ derivative\ Powerline:h16,Ubuntu\ Mono:h16,Anonymous\ Pro:h16,DejaVu\ Sans\ Mono:h16,Consolas:h14
 elseif has("gui_macvim")
-  set guifont=Ubuntu\ Mono:h16,Anonymous\ Pro:h16,Menlo:h16
+  set guifont=Ubuntu\ Mono\ derivative\ Powerline:h16,Ubuntu\ Mono:h16,Anonymous\ Pro:h16,Menlo:h16
 endif
 
 
@@ -200,6 +200,7 @@ let Tlist_GainFocus_On_ToggleOpen=1
 " Airline config
 let g:airline#extensions#tabline#enabled = 1 " Shows buffers if no tabs open
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tmuxline#enabled = 0
 
 "
 " Filetype Maps

@@ -82,3 +82,6 @@
 [submodule "_vim/bundle/vim-airline"]
   path = _vim/bundle/vim-airline
   url = https://github.com/bling/vim-airline
+[submodule "_vim/bundle/tmuxline"]
+	path = _vim/bundle/tmuxline
+	url = https://github.com/edkolev/tmuxline.vim
