@@ -55,7 +55,7 @@
 
   lg = log --graph --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate
   ll = log --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate
-  lstat = log --numstat --stat --name-status --abbrev-commit --date=local --pretty=format:'%C(yellow)%h %C(red)%d%C(reset)%C(cyan)%cr %C(green)[%cn] %Creset%C(yellow)%n%s%Creset'
+  lstat = log --name-status --abbrev-commit --date=local --pretty=format:'%C(yellow)%h%C(red)%d%C(reset) %C(cyan)%cr %C(green)[%cn] %Creset%C(yellow)%n%s'
   peeps = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
 
   # Working with files / history
