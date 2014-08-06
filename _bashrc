@@ -69,7 +69,7 @@ SOLRED="\[\033[0;31m\]"
 SOLBLUE="\[\033[0;34m\]"
 SOLBASE="\[\033[1;34m\]"
 SOLBASE01="\[\033[1;32m\]"
-#
+
 # Merges Git and SVN info to make the PS1 a little cleaner looking
 # Got this from: http://www.codeography.com/2009/05/26/speedy-bash-prompt-git-and-subversion-integration.html
 #
@@ -86,8 +86,7 @@ scm_ps1() {
 
 # [hh:mm] username@host (git branch || svn revision) ~/working/directory
 # $
-# [hh:mm] username@host (git branch || svn revision) ~/working/directory
-# $
+
 # Pretty ugly hack for msys... need to figure out how to determine if my
 # console is 256 color capable
 if [ $OSTYPE = 'msys' ]; then
@@ -99,7 +98,8 @@ else
 fi
 
 function presentation {
-  PS1="\[\033]0;\w\007$SOLBLUE\u@\h $SOLRED\$(scm_ps1) $SOLBASE\w \n$DARKGRAY\$ $SOLBASE01"
+  PRESENTMODE=true
+  PS1="\[\033]0;\w\007$SOLBLUE\h $SOLRED\$(scm_ps1) $SOLBASE\w \n$DARKGRAY\$ $SOLBASE01"
 }
 
 # Load any extra aliases
