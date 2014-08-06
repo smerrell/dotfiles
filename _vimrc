@@ -50,10 +50,16 @@ map <C-l> <C-w>l
 imap <C-W> <C-O><C-W>
 
 " Window resizing made easy
-map <A-k> <C-w>+
-map <A-j> <C-w>-
-map <A-l> <C-w>>
-map <A-h> <C-w><
+map <silent> <A-h> <C-w><
+map <silent> <A-j> <C-w>-
+map <silent> <A-k> <C-w>+
+map <silent> <A-l> <C-w>>
+
+" For the mac
+map <silent> ˙ <C-w><
+map <silent> ∆ <C-w>-
+map <silent> ˚ <C-w>+
+map <silent> ¬ <C-w>>
 "
 " Tabs
 "
@@ -161,10 +167,12 @@ set wildmode=list:longest,full
 set wildignore+=*.o,*.obj,.git,*.pyc.
 
 " Linux / Mac
-set wildignore+=*/.git/*
+set wildignore+=*/.git/*,*/node_modules/*
 
 " Windows
-set wildignore+=.git\*,Build\*,.sass-cache\*
+set wildignore+=.git\*,Build\*,.sass-cache\*,node_modules\*
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --cached --exclude-standard --others']
 
 "
 " Per-Filetype Scripts
