@@ -1,7 +1,7 @@
 alias pd='pushd $1'
 alias cdp='cd -'
 alias ssha='. ~/bin/sshagent'
-alias server='open http://localhost:8000 && python -m SimpleHTTPServer'
+alias server='python -m SimpleHTTPServer && open http://localhost:8000'
 alias bake='bundle exec rake'
 
 if [[ $platform == Darwin* ]]; then
