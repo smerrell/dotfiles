@@ -102,19 +102,6 @@ function presentation {
   PS1="\[\033]0;\w\007$SOLBLUE\h $SOLRED\$(scm_ps1) $SOLBASE\w \n$DARKGRAY\$ $SOLBASE01"
 }
 
-# Load any extra aliases
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# enable programmable completion features
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
-
 function gtab() {
   gvim --remote-tab-silent "$@" & :
 }
-
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

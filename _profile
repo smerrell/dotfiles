@@ -22,6 +22,16 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# Load any extra aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
 command -v brew > /dev/null
 if [ $? -eq 0 ]; then
   # Since OSX Lion and brew doesn't have this setup.
@@ -31,3 +41,4 @@ if [ $? -eq 0 ]; then
     . `brew --prefix`/etc/bash_completion
   fi
 fi
+
