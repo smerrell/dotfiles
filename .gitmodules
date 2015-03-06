@@ -46,10 +46,6 @@
   path = _vim/bundle/vim-less
   url = git://github.com/groenewege/vim-less.git
   ignore = dirty
-[submodule "_vim/bundle/vim-css-color"]
-  path = _vim/bundle/vim-css-color
-  url = git://github.com/skammer/vim-css-color.git
-  ignore = dirty
 [submodule "_vim/bundle/vim-css3-syntax"]
   path = _vim/bundle/vim-css3-syntax
   url = git://github.com/hail2u/vim-css3-syntax.git
