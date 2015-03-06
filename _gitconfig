@@ -43,7 +43,7 @@
   # Work flows
 
   blatest = !sh -c 'git checkout ${1:-master} && git fetch origin && git merge origin/${1:-master} --ff-only' -
-  brebase = !sh -c 'git checkout ${1:-master} && git fetch origin && git merge origin/${1:-master} --ff-only && git checkout @{-1} && git rebase $1' -
+  brebase = !sh -c 'git checkout ${1:-master} && git fetch origin && git merge origin/${1:-master} --ff-only && git checkout @{-1} && git rebase ${1:-master}' -
   bpush = !sh -c 'git checkout ${1:-master} && git merge @{-1} --ff-only && git push' -
 
   # Github workflows
@@ -90,5 +90,6 @@
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true

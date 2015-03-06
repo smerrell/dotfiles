@@ -226,3 +226,11 @@ autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+
+"
+" Syntastic config
+"
+let g:syntastic_javascript_checkers = ['eslint']
+
+" Pretty Print Json
+nmap <leader>jf :%!python -m json.tool<CR>
