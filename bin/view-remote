@@ -27,7 +27,9 @@ if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1; then
   url=$(git remote show $remote | grep "Fetch URL" | cut -c 14- | sed $sedRegex -e 's/([[:alnum:]]+@|git:\/\/)/http:\/\//' -e '
   s/\.git$//' -e 's/\.(com|org|net):/.\1\//' -e 's/^[[:space:]]*//')
 
-  # TODO: determine branch and possibly open remote at that branch for github
+  branch=$(git rev-parse --abbrev-ref HEAD)
+  url=$url"/tree/"$branch
+
   $opencmd $url
 else
   echo 'Not in a Git repository'
