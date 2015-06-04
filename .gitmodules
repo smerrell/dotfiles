@@ -96,3 +96,6 @@
 [submodule "_vim/bundle/PreserveNoEOL"]
 	path = _vim/bundle/PreserveNoEOL
 	url = https://github.com/vim-scripts/PreserveNoEOL.git
+[submodule "_vim/bundle/rust.vim"]
+	path = _vim/bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
