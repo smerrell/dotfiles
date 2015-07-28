@@ -135,6 +135,7 @@ set softtabstop=2       " <BS> over an autoindent deletes shiftwidth worth of sp
 set smarttab            " Insert blanks properly at beginning of a line
 set autoindent          " Copy indent from current line when starting a new line
 set expandtab           " Use spaces not tabs
+set tabstop=2
 
 " Show all tab chars and trailing whitespace
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
