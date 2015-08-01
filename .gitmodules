@@ -79,23 +79,23 @@
   path = _vim/bundle/vim-airline
   url = https://github.com/bling/vim-airline
 [submodule "_vim/bundle/tmuxline"]
-	path = _vim/bundle/tmuxline
-	url = https://github.com/edkolev/tmuxline.vim
+  path = _vim/bundle/tmuxline
+url = https://github.com/edkolev/tmuxline.vim
 [submodule "_vim/bundle/emmet-vim"]
-	path = _vim/bundle/emmet-vim
-	url = https://github.com/mattn/emmet-vim
+  path = _vim/bundle/emmet-vim
+  url = https://github.com/mattn/emmet-vim
 [submodule "_vim/bundle/vim-jsx"]
-	path = _vim/bundle/vim-jsx
-	url = https://github.com/mxw/vim-jsx.git
+  path = _vim/bundle/vim-jsx
+  url = https://github.com/mxw/vim-jsx.git
 [submodule "_vim/bundle/vim-javascript"]
-	path = _vim/bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
+  path = _vim/bundle/vim-javascript
+  url = https://github.com/pangloss/vim-javascript.git
 [submodule "_vim/bundle/editorconfig-vim"]
-	path = _vim/bundle/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim.git
+  path = _vim/bundle/editorconfig-vim
+  url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "_vim/bundle/PreserveNoEOL"]
-	path = _vim/bundle/PreserveNoEOL
-	url = https://github.com/vim-scripts/PreserveNoEOL.git
+  path = _vim/bundle/PreserveNoEOL
+  url = https://github.com/vim-scripts/PreserveNoEOL.git
 [submodule "_vim/bundle/rust.vim"]
-	path = _vim/bundle/rust.vim
-	url = https://github.com/rust-lang/rust.vim.git
+  path = _vim/bundle/rust.vim
+  url = https://github.com/rust-lang/rust.vim.git
