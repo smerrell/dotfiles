@@ -22,6 +22,16 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+if [ -d "$HOME/.cargo/bin" ] ; then
+    PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+if [ -d /usr/local/share/npm/bin ] ; then
+  PATH=/usr/local/share/npm/bin:$PATH
+fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
 # Load any extra aliases
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
