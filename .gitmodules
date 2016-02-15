@@ -111,11 +111,14 @@
   url = https://github.com/rust-lang/rust.vim.git
   ignore = dirty
 [submodule "_vim/bundle/vim-racer"]
-	path = _vim/bundle/vim-racer
-	url = https://github.com/racer-rust/vim-racer
+  path = _vim/bundle/vim-racer
+  url = https://github.com/racer-rust/vim-racer
+  ignore = dirty
 [submodule "_vim/bundle/elm.vim"]
-	path = _vim/bundle/elm.vim
-	url = https://github.com/lambdatoast/elm.vim.git
+  path = _vim/bundle/elm.vim
+  url = https://github.com/lambdatoast/elm.vim.git
+  ignore = dirty
 [submodule "_vim/bundle/syntastic-local-eslint.vim"]
-	path = _vim/bundle/syntastic-local-eslint.vim
-	url = https://github.com/mtscout6/syntastic-local-eslint.vim.git
+  path = _vim/bundle/syntastic-local-eslint.vim
+  url = https://github.com/mtscout6/syntastic-local-eslint.vim.git
+  ignore = dirty
