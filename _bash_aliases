@@ -3,6 +3,7 @@ alias cdp='cd -'
 alias ssha='. ~/bin/sshagent'
 alias server='python -m SimpleHTTPServer && open http://localhost:8000'
 alias bake='bundle exec rake'
+alias sdate='date  +"%Y-%m-%d"'
 
 if [[ $platform == Darwin* ]]; then
   alias gvim='mvim'
