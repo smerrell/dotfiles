@@ -131,3 +131,6 @@
 [submodule "_vim/bundle/gruvbox"]
 	path = _vim/bundle/gruvbox
 	url = https://github.com/morhetz/gruvbox
+[submodule "_vim/bundles/vim-ps1"]
+	path = _vim/bundles/vim-ps1
+	url = https://github.com/PProvost/vim-ps1.git
