@@ -1,0 +1,18 @@
+" vim: set ft=vim
+
+" Keys
+let mapleader = ","
+
+" Appearance
+set t_Co=256
+colorscheme wombat256mod
+set cursorline
+set number
+syntax on
+
+" File configurations
+filetype on
+filetype indent on
+filetype plugin on
+set noswapfile
+
