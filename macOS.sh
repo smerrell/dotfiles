@@ -8,3 +8,8 @@ xcode-select --install
 brew install fish
 
 # set fish as a usable shell
+sudo echo "/usr/local/bin/fish" >> /etc/shells
+
+# set fish as default shell
+# chsh -s /usr/local/bin/fish
+
