@@ -5,7 +5,6 @@
   email = merrell.sam@gmail.com
 
 [core]
-  editor = gvim
   excludesfile = ~/.gitignore_global
 
 [help]
@@ -47,7 +46,6 @@
 
   blatest = !sh -c 'git checkout ${1:-master} && git fetch origin && git merge origin/${1:-master} --ff-only' -
   brebase = !sh -c 'git checkout ${1:-master} && git fetch origin && git merge origin/${1:-master} --ff-only && git checkout @{-1} && git rebase ${1:-master}' -
-  bpush = !sh -c 'git checkout ${1:-master} && git merge @{-1} --ff-only && git push' -
 
   # Github workflows
 
@@ -59,7 +57,6 @@
   lg = log --graph --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate
   ll = log --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate
   lstat = log --name-status --abbrev-commit --date=local --pretty=format:'%C(yellow)%h%C(red)%d%C(reset) %C(cyan)%cr %C(green)[%cn] %Creset%C(yellow)%n%s'
-  peeps = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
 
   # Working with files / history
 
@@ -68,35 +65,26 @@
   lnew = log master.. --reverse
   di = diff --staged
 
-  # Branch / Remote management
-
-  # prunes branches that are already merged into the branch name passed in or master
-  pbranch = !sh -c 'git branch --merged "${1:-master}" | grep -v "${1:-master}"$ | xargs git branch -d' -
-  topic = checkout master -b
-
   # Misc
 
   fmerge = merge --ff-only
   stache = stash save -u
   cia = commit --amend -C HEAD
   rbc = rebase --continue
-  req = "!f() { git fetch origin refs/pull/$1/head:pr/$1; } ; f"
 
 [log]
   date = local
 
 [github]
   user = smerrell
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+
 [filter "media"]
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+
