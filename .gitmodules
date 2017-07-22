@@ -1,0 +1,9 @@
+[submodule "_vim/pack/my-plugins/vim-wombat256mod"]
+	path = _vim/pack/my-plugins/start/vim-wombat256mod
+	url = git@github.com:michalbachowski/vim-wombat256mod.git
+[submodule "_vim/pack/my-plugins/nerdcommenter"]
+	path = _vim/pack/my-plugins/start/nerdcommenter
+	url = git@github.com:scrooloose/nerdcommenter.git
+[submodule "_vim/pack/my-plugins/vim-markdown"]
+	path = _vim/pack/my-plugins/start/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown
