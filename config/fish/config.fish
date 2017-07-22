@@ -4,8 +4,7 @@ set fish_greeting ""
 
 echo "Adding SSH keys"
 eval "ssh-agent -s" > /dev/null
-ssh-add -K /Users/smerrell/.ssh/wtw_rsa
-ssh-add -K /Users/smerrell/.ssh/github_id_rsa
+ssh add -A
 
 set -l additional_path_items "$HOME/bin" "$HOME/.cargo/bin"
 for p in $additional_path_items
