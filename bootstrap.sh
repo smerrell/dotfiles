@@ -12,3 +12,5 @@ then
 	./macOS.sh
 fi
 
+./setup.fish
+
