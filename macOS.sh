@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Bootstrapping macOS machine"
-xcode-select --install
+xcode-select --install 2&> /dev/null
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
