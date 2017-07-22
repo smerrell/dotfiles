@@ -39,7 +39,7 @@ function fish_prompt --description 'Write out the prompt'
             set -qU fish_color_user
             or set -U fish_color_user -o green
             set -qU fish_color_host
-            or set -U fish_color_host -o red
+            or set -U fish_color_host -o cyan
             set -qU fish_color_status
             or set -U fish_color_status red
             set -U __fish_classic_git_prompt_initialized
@@ -59,7 +59,7 @@ function fish_prompt --description 'Write out the prompt'
             set suffix '#'
         case '*'
             set color_cwd blue
-            set suffix '>'
+            set suffix '➔'
     end
 
     set -l prompt_status
@@ -67,6 +67,6 @@ function fish_prompt --description 'Write out the prompt'
         set prompt_status ' ' (set_color $fish_color_status) "[$last_status]" "$normal"
     end
 
-    echo -s $normal "[" (date "+%H:%M:%S") "] " (set_color $fish_color_user) "$USER" $normal @ (set_color $fish_color_host) (prompt_hostname) $normal ' ' (set_color --bold $color_cwd) (pwd) $cyan (__fish_vcs_prompt)
+    echo -s (set_color $fish_color_user) "$USER" $normal @ (set_color $fish_color_host) (prompt_hostname) $normal ' ' (date "+%H:%M:%S") ' ' (set_color --bold $color_cwd) (pwd) $cyan (__fish_vcs_prompt)
     echo -s $prompt_status $blue $suffix $normal " "
 end
