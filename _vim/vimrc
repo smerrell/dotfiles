@@ -10,7 +10,7 @@ set cursorline
 set nowrap
 set number
 
-colorscheme wombat256mod
+colorscheme dracula
 
 " Text
 set shiftwidth=4
