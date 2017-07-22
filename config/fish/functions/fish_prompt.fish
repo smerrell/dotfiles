@@ -1,7 +1,10 @@
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
-    set -l normal (set_color normal)
+    set -l normal (set_color white)
     set -l red (set_color red)
+    set -l cyan (set_color cyan)
+    set -l blue (set_color --bold blue)
+    set fish_color_command --bold magenta
 
     # Hack; fish_config only copies the fish_prompt function (see #736)
     if not set -q -g __fish_classic_git_functions_defined
@@ -36,7 +39,7 @@ function fish_prompt --description 'Write out the prompt'
             set -qU fish_color_user
             or set -U fish_color_user -o green
             set -qU fish_color_host
-            or set -U fish_color_host -o cyan
+            or set -U fish_color_host -o red
             set -qU fish_color_status
             or set -U fish_color_status red
             set -U __fish_classic_git_prompt_initialized
@@ -51,11 +54,11 @@ function fish_prompt --description 'Write out the prompt'
             if set -q fish_color_cwd_root
                 set color_cwd $fish_color_cwd_root
             else
-                set color_cwd $fish_color_cwd
+                set color_cwd blue
             end
             set suffix '#'
         case '*'
-            set color_cwd $fish_color_cwd
+            set color_cwd blue
             set suffix '>'
     end
 
@@ -64,6 +67,6 @@ function fish_prompt --description 'Write out the prompt'
         set prompt_status ' ' (set_color $fish_color_status) "[$last_status]" "$normal"
     end
 
-    echo -s "[" (date "+%H:%M:%S") "] " (set_color $fish_color_user) "$USER" $normal @ (set_color $fish_color_host) (prompt_hostname) $normal ' ' (set_color $color_cwd) (pwd) $red (__fish_vcs_prompt)
-    echo -s $normal $prompt_status $suffix " "
+    echo -s $normal "[" (date "+%H:%M:%S") "] " (set_color $fish_color_user) "$USER" $normal @ (set_color $fish_color_host) (prompt_hostname) $normal ' ' (set_color --bold $color_cwd) (pwd) $cyan (__fish_vcs_prompt)
+    echo -s $prompt_status $blue $suffix $normal " "
 end
