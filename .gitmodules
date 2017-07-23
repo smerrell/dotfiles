@@ -10,3 +10,9 @@
 [submodule "config/iterm/themes/dracula"]
 	path = config/iterm/themes/dracula
 	url = https://github.com/dracula/iterm.git
+[submodule "_vim/pack/my-plugins/editorconfig"]
+	path = _vim/pack/my-plugins/start/editorconfig
+	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "_vim/pack/my-plugins/start/preserveNoEOL"]
+	path = _vim/pack/my-plugins/start/preserveNoEOL
+	url = https://github.com/vim-scripts/PreserveNoEOL.git
