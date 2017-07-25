@@ -10,7 +10,12 @@ set cursorline
 set nowrap
 set number
 
+" Show all tab chars and trailing whitespace
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set list
+
 colorscheme dracula
+
 
 " Text
 set shiftwidth=4
@@ -19,6 +24,7 @@ set softtabstop=4
 set smarttab
 set expandtab
 set autoindent
+set backspace=2
 
 
 " File configurations
@@ -36,4 +42,7 @@ set hlsearch
 " Key mappings
 map tk :tabnext<CR>
 map tj :tabprev<CR>
+
+" Remove trailing whitespace
+map <leader>e :%s/\s\+$//<CR>:let @/=''<CR>
 
