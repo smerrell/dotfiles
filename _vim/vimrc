@@ -9,6 +9,8 @@ set t_Co=256
 set cursorline
 set nowrap
 set number
+set laststatus=2
+set ruler
 
 " Show all tab chars and trailing whitespace
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
@@ -45,4 +47,7 @@ map tj :tabprev<CR>
 
 " Remove trailing whitespace
 map <leader>e :%s/\s\+$//<CR>:let @/=''<CR>
+
+" Plugin configurations
+let g:vim_markdown_folding_disabled = 1
 
