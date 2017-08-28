@@ -27,6 +27,7 @@ set smarttab
 set expandtab
 set autoindent
 set backspace=2
+"set clipboard+=unnamed
 
 
 " File configurations
@@ -50,4 +51,11 @@ map <leader>e :%s/\s\+$//<CR>:let @/=''<CR>
 
 " Plugin configurations
 let g:vim_markdown_folding_disabled = 1
+
+" For ctrlp
+set wildignore+=*.o,*.obj,.git,*.pyc.
+" Linux / Mac
+set wildignore+=*/.git/*,*/node_modules/*
+" " Windows
+set wildignore+=.git\*,Build\*,.sass-cache\*,node_modules\*
 
