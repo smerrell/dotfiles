@@ -41,6 +41,8 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
+" clear highlighted search using the space bar
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " Key mappings
 map tk :tabnext<CR>
@@ -56,6 +58,12 @@ let g:vim_markdown_folding_disabled = 1
 set wildignore+=*.o,*.obj,.git,*.pyc.
 " Linux / Mac
 set wildignore+=*/.git/*,*/node_modules/*
-" " Windows
+" Windows
 set wildignore+=.git\*,Build\*,.sass-cache\*,node_modules\*
+
+" Insert date
+iab <expr> dts strftime("%Y-%m-%d")
+
+" Autocmd
+autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 
