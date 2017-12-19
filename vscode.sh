@@ -5,6 +5,12 @@ if [ "$1" == "--insiders" ]; then
     vscodeInstance="code-insiders"
 fi
 
+# test code is installed
+command -v $vscodeInstance >/dev/null 2>&1 || {
+    echo >&2 "This script requires $vscodeInstance but it's not installed. Aborting."
+    exit 1;
+}
+
 extensions=(
     "EditorConfig.editorconfig"
     "JPTarquino.postgresql"
