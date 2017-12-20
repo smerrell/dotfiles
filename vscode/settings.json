@@ -1,0 +1,33 @@
+{
+    "editor.fontFamily": "Roboto Mono, Menlo, Monaco, 'Courier new', monospace",
+    "editor.fontSize": 14,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 135,
+    "editor.rulers": [
+        80,
+        135
+    ],
+    "editor.renderLineHighlight": "all",
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "editor.folding": false,
+    "editor.renderWhitespace": "boundary",
+    "extensions.autoUpdate": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "git.autofetch": false,
+    "git.enabled": false,
+    "terminal.external.osxExec": "iTerm.app",
+    "workbench.colorTheme": "Dracula",
+    "workbench.editor.enablePreview": false,
+    "window.zoomLevel": 1,
+    "[markdown]": {
+        "editor.rulers": [
+            80
+        ],
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 80
+    }
+}

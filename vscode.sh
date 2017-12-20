@@ -11,6 +11,19 @@ command -v $vscodeInstance >/dev/null 2>&1 || {
     exit 1;
 }
 
+# Test if macOS
+platform=$(uname)
+
+if [ "$platform" == "Darwin" ]; then
+    codeSettingsDir="$HOME/Library/Application Support/Code/User"
+
+    if [ "$vscodeInstance" == "code-insiders" ]; then
+        codeSettingsDir="$HOME/Library/Application Support/Code - Insiders/User"
+    fi
+
+    ln -sfv "$PWD/vscode/settings.json" "$codeSettingsDir/settings.json"
+fi
+
 extensions=(
     "EditorConfig.editorconfig"
     "JPTarquino.postgresql"
