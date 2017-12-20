@@ -14,6 +14,22 @@ command -v $vscodeInstance >/dev/null 2>&1 || {
 # Test if macOS
 platform=$(uname)
 
+# Test if Windows
+if [[ "$platform" = MINGW* || "$platform" = CYGWIN* ]]; then
+    codeSettingsDir="$APPDATA/Code/User"
+
+    if [ "$vscodeInstance" == "code-insiders" ]; then
+        codeSettingsDir="$APPDATA/Code - Insiders/User"
+        params="-Insiders"
+    fi
+
+    echo "Configuring VS Code on Windows"
+
+    # Call powershell to symlink
+    powershell ./vscode.ps1 $params
+fi
+
+
 if [ "$platform" == "Darwin" ]; then
     codeSettingsDir="$HOME/Library/Application Support/Code/User"
 
