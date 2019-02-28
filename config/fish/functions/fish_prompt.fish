@@ -5,6 +5,10 @@ function fish_prompt --description 'Write out the prompt'
     set -l cyan (set_color cyan)
     set -l blue (set_color --bold blue)
     set fish_color_command --bold magenta
+    set -U fish_prompt_pwd_dir_length 35
+    set -U __fish_git_prompt_showdirtystate true
+    set -U __fish_git_prompt_showcolorhints true
+    set -U __fish_git_prompt_show_informative_status true
 
     # Hack; fish_config only copies the fish_prompt function (see #736)
     if not set -q -g __fish_classic_git_functions_defined
@@ -67,6 +71,6 @@ function fish_prompt --description 'Write out the prompt'
         set prompt_status ' ' (set_color $fish_color_status) "[$last_status]" "$normal"
     end
 
-    echo -s (set_color $fish_color_user) "$USER" $normal @ (set_color $fish_color_host) (prompt_hostname) $normal ' ' (date "+%H:%M:%S") ' ' (set_color --bold $color_cwd) (prompt_pwd) $cyan (__fish_vcs_prompt)
+    echo -s $normal (date "+%H:%M:%S") ' ' (set_color $fish_color_user) "$USER" $normal @ (set_color $fish_color_host) (prompt_hostname) ' ' (set_color --bold $color_cwd) (prompt_pwd) $cyan (__fish_vcs_prompt)
     echo -s $prompt_status $blue $suffix $normal " "
 end
