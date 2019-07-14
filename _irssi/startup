@@ -1,2 +1,0 @@
-script exec print STDERR "\033]0\;Irssi v" . '$J' . " (" . '$V' . ") - " . '$X' . " ~ " . '$sysname' . " " . '$sysrelease' . " " . '$sysarch' . "\007"
-echo Welcome to Irssi, $X

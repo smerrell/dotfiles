@@ -1,0 +1,46 @@
+{
+    "editor.fontFamily": "Fira Code, Roboto Mono, Menlo, Monaco, 'Courier new', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12,
+    "editor.formatOnSaveTimeout": 975,
+    "editor.insertSpaces": true,
+    "editor.rulers": [
+        80,
+        135
+    ],
+    "editor.tabSize": 2,
+    "editor.wordWrapColumn": 135,
+    "editor.renderLineHighlight": "all",
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "editor.folding": false,
+    "editor.renderWhitespace": "boundary",
+    "extensions.autoUpdate": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "git.autofetch": false,
+    "git.enabled": false,
+    "http.proxyStrictSSL": false,
+    "terminal.external.osxExec": "iTerm.app",
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Dracula",
+    "workbench.editor.enablePreview": false,
+    "[markdown]": {
+        "editor.formatOnType": false,
+        "editor.formatOnSave": false,
+        "editor.rulers": [
+            80
+        ],
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 80
+    },
+    "[csharp]": {
+        "editor.tabSize": 4
+    },
+    "[json]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.formatOnSave": false
+    }
+}

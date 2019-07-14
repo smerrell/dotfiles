@@ -1,9 +1,0 @@
-rxvt*background:#242424
-rxvt*foreground:#e3e0d7
-rxvt*scrollBar:true
-rxvt*scrollBar_right:true
-rxvt*saveLines:30000
-rxvt*transparent:true
-rxvt*shading:40
-rxvt*geometry:100x50
-
