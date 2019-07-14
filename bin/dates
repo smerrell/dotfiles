@@ -1,0 +1,28 @@
+#! /usr/local/bin/python3
+
+from datetime import datetime, timedelta
+from dateutil import relativedelta
+import calendar
+
+
+def full_week(now: datetime.date = None) -> (str, str):
+    if now is None:
+        now = datetime.now()
+
+    weekday = now.isoweekday()
+    sunday_delta = weekday * -1 if weekday < 7 else 0
+    sunday = now + timedelta(days=sunday_delta)
+    saturday_delta = 6 - weekday if weekday != 7 else 6
+    saturday = now + timedelta(days=saturday_delta)
+
+    dateformat = "%Y.%m.%d"
+    return (sunday.strftime(dateformat), saturday.strftime(dateformat))
+
+
+sun, sat = full_week()
+print(f"{sun} - {sat}")
+
+# for d in range(7):
+#     day = datetime(2019, 7, 10 + d)
+#     sun, sat = full_week(day)
+#     print(f"{day} full week: {sun} - {sat}")
