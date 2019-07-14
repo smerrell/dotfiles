@@ -21,30 +21,27 @@ def full_week(now: datetime.date = None) -> (str, str):
 
 
 parser = argparse.ArgumentParser(
-    description="Display Date ranges since dates are hard")
+    description="Display Date ranges since dates are hard.")
 parser.add_argument("--fullweek", action="store_true",
-                    help="Print out the full week (Sunday through Saturday) for a given day")
+                    help="Print out the full week (Sunday through Saturday) for a given day.")
 parser.add_argument("--workweek", action="store_true",
-                    help="Print out the work week (Monday through Friday) for a given day")
+                    help="Print out the work week (Monday through Friday) for a given day.")
+parser.add_argument("--test", action="store_true",
+                    help="Print out 7 days and their corresponding week (work or full) from the set date (or today). Dates are hard.")
 parser.add_argument("--startday", type=datetime.fromisoformat,
                     help="Date to start the range calculation from. If not set, defaults to current day. ISO Format <YYYY-mm-dd>.")
 
 args = parser.parse_args()
-
-# --startday "yyyy-mm-dd"
-# --fullweek
-# --workweek
-
-if args.fullweek is True:
+if args.test is True:
+    for d in range(7):
+        day = datetime.now() if args.startday is None else args.startday
+        test_day = day + timedelta(days=d)
+        sun, sat = full_week(test_day)
+        print(f"{test_day.strftime('%Y.%m.%d')} full week: {sun} - {sat}")
+elif args.fullweek is True:
     sun, sat = full_week(args.startday)
     print(f"{sun} - {sat}")
 elif args.workweek is True:
     print("workweek")
 else:
     parser.print_help()
-
-
-# for d in range(7):
-#     day = datetime(2019, 7, 10 + d)
-#     sun, sat = full_week(day)
-#     print(f"{day} full week: {sun} - {sat}")
