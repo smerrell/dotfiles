@@ -3,9 +3,14 @@
 [user]
   name = Sam Merrell
   email = merrell.sam@gmail.com
+  signingkey = merrell.sam@gmail.com
+
+[commit]
+    gpgsign = true
 
 [core]
   excludesfile = ~/.gitignore_global
+  autocrlf = input
 
 [help]
   # git lgo corrected to git log. Yay!
@@ -79,12 +84,12 @@
   user = smerrell
 
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+    required = true
+    clean = git media clean %f
+    smudge = git media smudge %f
 
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+    clean = git lfs clean %f
+    smudge = git lfs smudge %f
+    required = true
 
