@@ -10,13 +10,37 @@ def full_week(now: datetime.date = None, dateformat: str = "%Y.%m.%d") -> (str, 
     if now is None:
         now = datetime.now()
 
-    weekday = now.isoweekday()
-    sunday_delta = weekday * -1 if weekday < 7 else 0
-    sunday = now + timedelta(days=sunday_delta)
-    saturday_delta = 6 - weekday if weekday != 7 else 6
-    saturday = now + timedelta(days=saturday_delta)
+    def sunday_delta(d: datetime.date) -> int:
+        weekday = d.isoweekday()
+        return weekday * -1 if weekday < 7 else 0
 
-    return (sunday.strftime(dateformat), saturday.strftime(dateformat))
+    def saturday_delta(d: datetime.date) -> int:
+        weekday = d.isoweekday()
+        return 6 - weekday if weekday != 7 else 6
+
+    return week_range(sunday_delta, saturday_delta, now, dateformat)
+
+
+def work_week(now: datetime.date = None, dateformat: str = "%Y.%m.%d") -> (str, str):
+    if now is None:
+        now = datetime.now()
+
+    def monday_delta(d: datetime.date) -> int:
+        weekday = d.weekday()
+        return weekday * -1 if weekday != 6 else 1
+
+    def friday_delta(d: datetime.date) -> int:
+        weekday = d.weekday()
+        return 4 - weekday if weekday != 6 else 5
+
+    return week_range(monday_delta, friday_delta, now, dateformat)
+
+
+def week_range(begin_delta, end_delta, now: datetime.date, dateformat: str) -> (str, str):
+    begin = now + timedelta(days=begin_delta(now))
+    end = now + timedelta(days=end_delta(now))
+
+    return (begin.strftime(dateformat), end.strftime(dateformat))
 
 
 parser = argparse.ArgumentParser(
@@ -27,6 +51,8 @@ parser.add_argument("--workweek", action="store_true",
                     help="Print out the work week (Monday through Friday) for a given day.")
 parser.add_argument("--dateformat", default="%Y.%m.%d",
                     help="Format to print date in. Defaults to '%(default)s'")
+parser.add_argument("--rangeseparator", default="—",
+                    help="Date range separator. Defaults to '%(default)s'")
 parser.add_argument("--test", action="store_true",
                     help="Print out 7 days and their corresponding week (work or full) from the set date (or today). Dates are hard.")
 parser.add_argument("--startday", type=datetime.fromisoformat,
@@ -34,15 +60,21 @@ parser.add_argument("--startday", type=datetime.fromisoformat,
 
 args = parser.parse_args()
 if args.test is True:
+    week_type = "full week"
     for d in range(7):
         day = datetime.now() if args.startday is None else args.startday
         test_day = day + timedelta(days=d)
-        sun, sat = full_week(test_day, args.dateformat)
-        print(f"{test_day.strftime(args.dateformat)} full week: {sun} - {sat}")
+        begin, end = full_week(test_day, args.dateformat)
+        if args.workweek is True:
+            begin, end = work_week(test_day, args.dateformat)
+            week_type = "work week"
+        print(
+            f"{test_day.strftime(args.dateformat)} {week_type}: {begin} {args.rangeseparator} {end}")
 elif args.fullweek is True:
     sun, sat = full_week(args.startday, args.dateformat)
-    print(f"{sun} - {sat}")
+    print(f"{sun} {args.rangeseparator} {sat}")
 elif args.workweek is True:
-    print("workweek")
+    mon, fri = work_week(args.startday, args.dateformat)
+    print(f"{mon} {args.rangeseparator} {fri}")
 else:
     parser.print_help()
