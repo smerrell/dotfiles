@@ -1,5 +1,6 @@
 #! /usr/local/bin/python3
 
+import argparse
 from datetime import datetime, timedelta
 from dateutil import relativedelta
 import calendar
@@ -19,8 +20,29 @@ def full_week(now: datetime.date = None) -> (str, str):
     return (sunday.strftime(dateformat), saturday.strftime(dateformat))
 
 
-sun, sat = full_week()
-print(f"{sun} - {sat}")
+parser = argparse.ArgumentParser(
+    description="Display Date ranges since dates are hard")
+parser.add_argument("--fullweek", action="store_true",
+                    help="Print out the full week (Sunday through Saturday) for a given day")
+parser.add_argument("--workweek", action="store_true",
+                    help="Print out the work week (Monday through Friday) for a given day")
+parser.add_argument("--startday", type=datetime.fromisoformat,
+                    help="Date to start the range calculation from. If not set, defaults to current day. ISO Format <YYYY-mm-dd>.")
+
+args = parser.parse_args()
+
+# --startday "yyyy-mm-dd"
+# --fullweek
+# --workweek
+
+if args.fullweek is True:
+    sun, sat = full_week(args.startday)
+    print(f"{sun} - {sat}")
+elif args.workweek is True:
+    print("workweek")
+else:
+    parser.print_help()
+
 
 # for d in range(7):
 #     day = datetime(2019, 7, 10 + d)
