@@ -6,7 +6,7 @@ from dateutil import relativedelta
 import calendar
 
 
-def full_week(now: datetime.date = None) -> (str, str):
+def full_week(now: datetime.date = None, dateformat: str = "%Y.%m.%d") -> (str, str):
     if now is None:
         now = datetime.now()
 
@@ -16,7 +16,6 @@ def full_week(now: datetime.date = None) -> (str, str):
     saturday_delta = 6 - weekday if weekday != 7 else 6
     saturday = now + timedelta(days=saturday_delta)
 
-    dateformat = "%Y.%m.%d"
     return (sunday.strftime(dateformat), saturday.strftime(dateformat))
 
 
@@ -26,6 +25,8 @@ parser.add_argument("--fullweek", action="store_true",
                     help="Print out the full week (Sunday through Saturday) for a given day.")
 parser.add_argument("--workweek", action="store_true",
                     help="Print out the work week (Monday through Friday) for a given day.")
+parser.add_argument("--dateformat", default="%Y.%m.%d",
+                    help="Format to print date in. Defaults to '%(default)s'")
 parser.add_argument("--test", action="store_true",
                     help="Print out 7 days and their corresponding week (work or full) from the set date (or today). Dates are hard.")
 parser.add_argument("--startday", type=datetime.fromisoformat,
@@ -36,10 +37,10 @@ if args.test is True:
     for d in range(7):
         day = datetime.now() if args.startday is None else args.startday
         test_day = day + timedelta(days=d)
-        sun, sat = full_week(test_day)
-        print(f"{test_day.strftime('%Y.%m.%d')} full week: {sun} - {sat}")
+        sun, sat = full_week(test_day, args.dateformat)
+        print(f"{test_day.strftime(args.dateformat)} full week: {sun} - {sat}")
 elif args.fullweek is True:
-    sun, sat = full_week(args.startday)
+    sun, sat = full_week(args.startday, args.dateformat)
     print(f"{sun} - {sat}")
 elif args.workweek is True:
     print("workweek")
