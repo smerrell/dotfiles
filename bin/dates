@@ -1,9 +1,11 @@
 #! /usr/local/bin/python3
 
 import argparse
-from datetime import datetime, timedelta
-from dateutil import relativedelta
 import calendar
+import sys
+from datetime import datetime, timedelta
+
+from dateutil import relativedelta
 
 
 def full_week(now: datetime.date = None, dateformat: str = "%Y.%m.%d") -> (str, str):
@@ -43,6 +45,11 @@ def week_range(begin_delta, end_delta, now: datetime.date, dateformat: str) -> (
     return (begin.strftime(dateformat), end.strftime(dateformat))
 
 
+def print_range(daterange: (str, str)):
+    beginning, end = daterange
+    print(f"{beginning} {args.rangeseparator} {end}", end='')
+
+
 parser = argparse.ArgumentParser(
     description="Display Date ranges since dates are hard.")
 parser.add_argument("--fullweek", action="store_true",
@@ -58,23 +65,25 @@ parser.add_argument("--test", action="store_true",
 parser.add_argument("--startday", type=datetime.fromisoformat,
                     help="Date to start the range calculation from. If not set, defaults to current day. ISO Format <YYYY-mm-dd>.")
 
-args = parser.parse_args()
-if args.test is True:
-    week_type = "full week"
-    for d in range(7):
-        day = datetime.now() if args.startday is None else args.startday
-        test_day = day + timedelta(days=d)
-        begin, end = full_week(test_day, args.dateformat)
-        if args.workweek is True:
-            begin, end = work_week(test_day, args.dateformat)
-            week_type = "work week"
-        print(
-            f"{test_day.strftime(args.dateformat)} {week_type}: {begin} {args.rangeseparator} {end}")
-elif args.fullweek is True:
-    sun, sat = full_week(args.startday, args.dateformat)
-    print(f"{sun} {args.rangeseparator} {sat}")
-elif args.workweek is True:
-    mon, fri = work_week(args.startday, args.dateformat)
-    print(f"{mon} {args.rangeseparator} {fri}")
-else:
-    parser.print_help()
+try:
+    args = parser.parse_args()
+    if args.test is True:
+        week_type = "full week"
+        for d in range(7):
+            day = datetime.now() if args.startday is None else args.startday
+            test_day = day + timedelta(days=d)
+            begin, end = full_week(test_day, args.dateformat)
+            if args.workweek is True:
+                begin, end = work_week(test_day, args.dateformat)
+                week_type = "work week"
+            print(
+                f"{test_day.strftime(args.dateformat)} {week_type}: {begin} {args.rangeseparator} {end}")
+    elif args.fullweek is True:
+        print_range(full_week(args.startday, args.dateformat))
+    elif args.workweek is True:
+        print_range(work_week(args.startday, args.dateformat))
+    else:
+        parser.print_help()
+except:
+    e = sys.exc_info()[0]
+    print(e.value)
