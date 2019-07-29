@@ -5,8 +5,6 @@ import calendar
 import sys
 from datetime import datetime, timedelta
 
-from dateutil import relativedelta
-
 
 def full_week(now: datetime.date = None, dateformat: str = "%Y.%m.%d") -> (str, str):
     if now is None:
