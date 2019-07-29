@@ -25,19 +25,21 @@ install=$(echo "$syncText" | grep "^<")
 uninstall=$(echo "$syncText" | grep "^>")
 
 if [ "$fullsync" = true ]; then
-  readarray -t extensions <<< "$uninstall"
+  # readarray -t extensions <<< "$uninstall"
+  IFS=$'\n' read -rd '' -a extensions <<< "$uninstall"
   for extension in "${extensions[@]}"; do
     ext="${extension#"> "}"
     if [ ! -z "$ext" ]; then
-      $vscodeInstance --uninstall-extension $ext
+      echo $vscodeInstance --uninstall-extension $ext
     fi
   done
 fi
 
-readarray -t extensions <<< "$install"
+# readarray -t extensions <<< "$install"
+IFS=$'\n' read -rd '' -a extensions <<< "$install"
 for extension in "${extensions[@]}"; do
   ext="${extension#"< "}"
   if [ ! -z "$ext" ]; then
-    $vscodeInstance --install-extension $ext }
+    echo $vscodeInstance --install-extension $ext
   fi
 done
