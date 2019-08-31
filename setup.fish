@@ -17,13 +17,13 @@ for executable in bin/*
     set full_executable_path "$PWD/$executable"
     set bin_executable_path "$HOME/$executable"
     if not test -L $bin_executable_path
-        echo ln -sv "$full_executable_path" "$bin_executable_path"
+        ln -sv "$full_executable_path" "$bin_executable_path"
     else
         echo "$bin_executable_path already symlinked, skipping"
     end
 end
 
-symlinks into $HOME
+# symlinks into $HOME
 for linkable in _*
     set linkdir (string replace -r "^_" "." $linkable)
     if not test -L "$HOME/$linkdir"
