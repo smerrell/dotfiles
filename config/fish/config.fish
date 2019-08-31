@@ -58,5 +58,5 @@ else
     end
 end
 
-set GPG_TTY -gx (tty)
+set -gx GPG_TTY (tty)
 
