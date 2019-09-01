@@ -30,7 +30,7 @@ if [ "$fullsync" = true ]; then
   for extension in "${extensions[@]}"; do
     ext="${extension#"> "}"
     if [ ! -z "$ext" ]; then
-      echo $vscodeInstance --uninstall-extension $ext
+      $vscodeInstance --uninstall-extension $ext
     fi
   done
 fi
@@ -40,6 +40,6 @@ IFS=$'\n' read -rd '' -a extensions <<< "$install"
 for extension in "${extensions[@]}"; do
   ext="${extension#"< "}"
   if [ ! -z "$ext" ]; then
-    echo $vscodeInstance --install-extension $ext
+    $vscodeInstance --install-extension $ext
   fi
 done

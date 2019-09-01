@@ -41,7 +41,4 @@ if [ "$platform" == "Darwin" ]; then
 fi
 
 # Install Extensions
-while IFS="" read -r plugin || [ -n "$plugin" ]
-do
-    $vscodeInstance --install-extension $plugin --force
-done < vscode-plugins.txt
+./vscode-sync.sh $1 # pass along if --insiders was used
