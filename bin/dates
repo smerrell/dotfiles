@@ -82,6 +82,6 @@ try:
         print_range(work_week(args.startday, args.dateformat))
     else:
         parser.print_help()
-except:
+except Exception:
     e = sys.exc_info()[0]
     print(e.value)
