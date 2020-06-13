@@ -16,6 +16,8 @@ set ruler
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set list
 
+packadd! dracula
+syntax enable
 colorscheme dracula
 
 
