@@ -11,6 +11,7 @@
 [core]
   excludesfile = ~/.gitignore_global
   autocrlf = input
+  pager = delta --dark
 
 [help]
   # git lgo corrected to git log. Yay!
