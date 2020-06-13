@@ -26,8 +26,8 @@
 [fetch]
   prune = true
 
-[push]
-  default = tracking
+;[push]
+  ;default = tracking
 
 [pull]
   ff = only
