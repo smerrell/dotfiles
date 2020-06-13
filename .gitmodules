@@ -4,9 +4,6 @@
 [submodule "_vim/pack/my-plugins/vim-markdown"]
 	path = _vim/pack/my-plugins/start/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown
-[submodule "_vim/pack/my-plugins/opt/dracula"]
-	path = _vim/pack/my-plugins/opt/dracula
-	url = git@github.com:dracula/vim.git
 [submodule "config/iterm/themes/dracula"]
 	path = config/iterm/themes/dracula
 	url = https://github.com/dracula/iterm.git
