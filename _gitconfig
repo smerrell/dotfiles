@@ -29,6 +29,9 @@
 [push]
   default = tracking
 
+[pull]
+  ff = only
+
 [merge]
   tool = p4merge
 
