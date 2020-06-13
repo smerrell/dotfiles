@@ -1,0 +1,7 @@
+version: 2
+updates:
+  # Enable version updates for vim packages
+  - package-ecosystem: "gitsubmodule"
+    directory: "_vim/pack/"
+    schedule:
+      interval: "weekly"
