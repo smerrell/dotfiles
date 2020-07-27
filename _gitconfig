@@ -6,7 +6,7 @@
   signingkey = merrell.sam@gmail.com
 
 [commit]
-    gpgsign = true
+  gpgsign = true
 
 [core]
   excludesfile = ~/.gitignore_global
@@ -51,31 +51,37 @@
   cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
 
 [alias]
-  # Work flows
+  # Get the default branch for origin. This comes from StackOverflow
+  # https://stackoverflow.com/a/44750379 This makes it so while we transition
+  # away from using the "master" terminology the aliases work. The added
+  # benefit is that it should work for any default branch name, so if people
+  # use main, dev, develop, trunk, etc. the aliases should still function as
+  # expected.
+  #
+  # Also, this alias is here because you can do nested aliases in git now! I
+  # didn't realize that it was enabled in 2.20, so thanks again StackOverflow
+  # https://stackoverflow.com/a/52863852
+  def = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
 
-  blatest = !sh -c 'git checkout ${1:-master} && git fetch origin && git merge origin/${1:-master} --ff-only' -
-  brebase = !sh -c 'git checkout ${1:-master} && git fetch origin && git merge origin/${1:-master} --ff-only && git checkout @{-1} && git rebase ${1:-master}' -
+  # Rebase the current branch off the default branch (see def above). You can
+  # also choose to pass in a branch name if you are trying to rebase from a
+  # different branch.
+  #
+  brebase = !sh -c 'def=$(git def) && git checkout ${1:-$def} && git fetch origin && git merge origin/${1:-$def} --ff-only && git checkout @{-1} && git rebase ${1:-$def}' -
 
-  # Github workflows
-
-  upmaster = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD
-  uprebase = !git checkout master && git fetch upstream && git merge upstream/master --ff-only && git push origin HEAD &&  git checkout @{-1} && git rebase master
+  # Pull the latest from upstream and push it to my fork at origin
+  updef = !def=$(git def) && git checkout $def && git fetch upstream && git merge upstream/$def --ff-only && git push origin HEAD
 
   # Log aliases
-
   lg = log --graph --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate
   ll = log --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate
   lstat = log --name-status --abbrev-commit --date=local --pretty=format:'%C(yellow)%h%C(red)%d%C(reset) %C(cyan)%cr %C(green)[%cn] %Creset%C(yellow)%n%s'
 
   # Working with files / history
-
   revive = !sh -c 'git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"' -
-  new = log --pretty=format:'%C(yellow)%h%C(reset) - %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate master..
-  lnew = log master.. --reverse
   di = diff --staged
 
   # Misc
-
   fmerge = merge --ff-only
   stache = stash save -u
   cia = commit --amend -C HEAD
@@ -88,12 +94,20 @@
   user = smerrell
 
 [filter "media"]
-    required = true
-    clean = git media clean %f
-    smudge = git media smudge %f
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
 
 [filter "lfs"]
-    clean = git lfs clean %f
-    smudge = git lfs smudge %f
-    required = true
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
 
+[includeIf "gitdir:~/Projects/work/"]
+  path = .gitconfig_work
+
+[pull]
+    rebase = false
+
+[init]
+    defaultBranch = main
