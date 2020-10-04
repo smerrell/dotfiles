@@ -1,13 +1,10 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
-# Portable Foreign Function Interface library
-brew "libffi"
-# Tool for browsing source code
-brew "cscope"
 # Modern replacement for 'ls'
 brew "exa"
 # Play, record, convert, and stream audio and video
@@ -21,6 +18,8 @@ brew "git"
 brew "git-delta"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# GNU Pretty Good Privacy (PGP) package
+brew "gpg"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # Configurable static site generator
@@ -43,8 +42,11 @@ brew "tmux"
 brew "tree"
 cask "azure-data-studio"
 cask "dotnet-sdk"
+cask "font-fira-code"
+cask "font-jetbrains-mono"
 cask "keybase"
-cask "unetbootin"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
 cask "visual-studio-code-insiders"
 mas "Bear", id: 1091189122
 mas "Kindle", id: 405399194
