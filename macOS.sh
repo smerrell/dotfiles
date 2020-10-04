@@ -15,6 +15,7 @@ brew install fish
 
 # set fish as a usable shell
 if ! grep -q "fish" /etc/shells; then
+    echo "Adding /usr/local/bin/fish to /etc/shells"
     sudo echo "/usr/local/bin/fish" >> /etc/shells
 else
     echo "fish already in /etc/shells, skipping."
