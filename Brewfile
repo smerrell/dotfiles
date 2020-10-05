@@ -34,6 +34,7 @@ brew "mas"
 brew "node"
 # Python dependency management tool
 brew "pipenv"
+brew "pygments"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Terminal multiplexer
@@ -44,6 +45,7 @@ cask "azure-data-studio"
 cask "dotnet-sdk"
 cask "font-fira-code"
 cask "font-jetbrains-mono"
+cask "gpg-suite"
 cask "keybase"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
