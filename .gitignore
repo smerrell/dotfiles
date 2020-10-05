@@ -8,3 +8,4 @@ _config/inkscape/
 _config/configstore/
 _config/git/
 fishd.*
+*.lock.json
