@@ -72,6 +72,11 @@
   # Pull the latest from upstream and push it to my fork at origin
   updef = !def=$(git def) && git checkout $def && git fetch upstream && git merge upstream/$def --ff-only && git push origin HEAD
 
+  # Prune branches and delete any that are already merged into the default
+  # branch borrowed from here:
+  # https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged
+  pbranch = !sh -c 'def=$(git def) && git checkout $def && git pull && git checkout - && git branch --merged | egrep -v "\\(^\\\\*\\|main\\)" | xargs git branch -d'
+
   # Log aliases
   lg = log --graph --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate
   ll = log --pretty=format:'%C(yellow)%h%C(reset) -%C(red)%d%C(reset) %s %C(green)(%cr) %C(cyan)[%an]%C(reset)' --abbrev-commit --date=relative --decorate
