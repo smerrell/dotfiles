@@ -13,6 +13,13 @@
   autocrlf = input
   pager = delta --dark
 
+[interactive]
+  diffFilter = delta --dark --color-only
+
+[delta]
+  features = line-numbers decorations
+  whitespace-error-style = 22 reverse
+
 [help]
   # git lgo corrected to git log. Yay!
   autocorrect = -1
@@ -27,28 +34,8 @@
 [fetch]
   prune = true
 
-;[push]
-  ;default = tracking
-
 [pull]
   ff = only
-
-[merge]
-  tool = p4merge
-
-[mergetool "p4merge"]
-  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-  trustExitCode = false
-  keepTemporaries = false
-  keepBackup = false
-
-[diff]
-  tool = p4merge
-  renames = copies
-  renamelimit = 2785
-
-[difftool "p4merge"]
-  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
 
 [alias]
   # Get the default branch for origin. This comes from StackOverflow
@@ -116,3 +103,6 @@
 
 [init]
     defaultBranch = main
+
+[gpg]
+    program = /usr/local/MacGPG2/bin/gpg
