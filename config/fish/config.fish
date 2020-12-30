@@ -58,5 +58,8 @@ else
    end
 end
 
+# Use Starshp as my prompt
+starship init fish | source
+
 set -gx GPG_TTY (tty)
 

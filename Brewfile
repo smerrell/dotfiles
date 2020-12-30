@@ -37,6 +37,8 @@ brew "pipenv"
 brew "pygments"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Terminal multiplexer
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
@@ -44,6 +46,7 @@ brew "tree"
 cask "azure-data-studio"
 cask "dotnet-sdk"
 cask "font-fira-code"
+cask "font-fira-code-nerd-font"
 cask "font-jetbrains-mono"
 cask "gpg-suite"
 cask "keybase"
