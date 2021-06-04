@@ -1,5 +1,9 @@
 set -gx LSCOLORS gxfxcxdxbxegedabagacad
 
+if [ (uname -m) = "arm64" ]
+      eval (/opt/homebrew/bin/brew shellenv)
+end
+
 set fish_greeting ""
 
 set -l additional_path_items "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.dotnet/tools"
