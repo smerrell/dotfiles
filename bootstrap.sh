@@ -10,6 +10,7 @@ os=$(uname)
 if [[ "$os" -eq "Darwin" ]];
 then
 	./macOS.sh
+    brew bundle
 fi
 
 ./setup.fish
