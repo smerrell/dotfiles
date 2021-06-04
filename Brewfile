@@ -53,8 +53,6 @@ cask "keybase"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 cask "visual-studio-code-insiders"
-mas "Bear", id: 1091189122
-mas "Kindle", id: 405399194
 mas "Microsoft To Do", id: 1274495053
 mas "OmniFocus", id: 1346203938
 mas "Pixelmator Pro", id: 1289583905
