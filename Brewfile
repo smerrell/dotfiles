@@ -3,6 +3,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+brew "1password-cli"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Modern replacement for 'ls'
@@ -13,6 +14,7 @@ brew "ffmpeg"
 brew "fish"
 # GNU debugger
 brew "gdb"
+brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
