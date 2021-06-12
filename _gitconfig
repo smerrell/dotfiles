@@ -3,7 +3,7 @@
 [user]
   name = Sam Merrell
   email = merrell.sam@gmail.com
-  signingkey = merrell.sam@gmail.com
+  signingkey = B63509B5C2E449F7!
 
 [commit]
   gpgsign = true
