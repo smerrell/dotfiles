@@ -7,5 +7,7 @@ _config/xbuild/
 _config/inkscape/
 _config/configstore/
 _config/git/
+_gnupg/
+!_gnupg/gpgagent.conf
 fishd.*
 *.lock.json
