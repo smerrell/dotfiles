@@ -1,0 +1,50 @@
+[battery]
+full_symbol = " "
+charging_symbol = " ️"
+discharging_symbol = " "
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[✗](bold red)"
+vicmd_symbol = "[](bold green)"
+
+[cmd_duration]
+format = "[祥$duration]($style)"
+
+[dotnet]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+disabled = false
+
+[directory]
+truncation_symbol = "…"
+truncation_length = 10
+# Whether or not to truncate to the root of the git repo that you're currently
+# in
+# truncate_to_repo = false
+# This is the default format with a newline added. This would make the terminal
+# three line like I have had before. I'll leave this commented out for now and
+# see how I feel about it.
+# format = "[$path]($style)[$read_only]($read_only_style)\n"
+
+[python]
+python_binary = "python3"
+symbol = " "
+style = "green bold"
+
+[terraform]
+symbol = "🅣"
+
+[time]
+disabled = false
+
+# So we can customize the Powershell terminal just a bit
+[env_var]
+variable = "POWERSHELL"
+format = "[$symbol]($style)"
+symbol = " "
+style = "white dimmed"
