@@ -1,7 +1,5 @@
 [battery]
-full_symbol = " "
-charging_symbol = " ️"
-discharging_symbol = " "
+disabled = true
 
 [character]
 success_symbol = "[➜](bold green)"
@@ -9,10 +7,10 @@ error_symbol = "[✗](bold red)"
 vicmd_symbol = "[](bold green)"
 
 [cmd_duration]
-format = "[祥$duration]($style)"
+format = "[$duration]($style)"
 
 [dotnet]
-symbol = " "
+symbol = " "
 
 [nodejs]
 symbol = " "
@@ -37,7 +35,7 @@ symbol = " "
 style = "green bold"
 
 [terraform]
-symbol = "🅣"
+symbol = ""
 
 [time]
 disabled = false
@@ -46,5 +44,5 @@ disabled = false
 [env_var]
 variable = "POWERSHELL"
 format = "[$symbol]($style)"
-symbol = " "
+symbol = " "
 style = "white dimmed"
